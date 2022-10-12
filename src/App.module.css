@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+  background-color: #333333;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Stock Search Styles */
+
+.topBar {
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  column-gap: 3rem;
+  width: 100%;
+}
+
+.searchBar {
+  min-width: 500px;
+  height: 3rem;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  color: #333333;
+  border-radius: 2rem;
+}
+
+.searchBar[type="text"]:focus {
+  border: none;
+  outline: none;
+}
+
+.currentStock {
+  color: white;
+}
+
+/* Menu Styles */
+
+.menuNav {
+  margin: auto;
+  padding: 1rem;
+  background-color: #241f2a;
+  width: min-content;
+  display: flex;
+  column-gap: 1rem;
+  border-radius: 1rem;
+}
+
+.menuNavItem {
+  background-color: #241f2a;
+  border: none;
+  padding: 1rem 4rem;
+  color: white;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.menuNavItem:hover {
+  background-color: #333333;
+  border-radius: 0.75rem;
+}
+
+.menuNavItemSelected {
+  background-color: #3f6eff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 1rem 4rem;
+  color: white;
+  cursor: pointer;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}

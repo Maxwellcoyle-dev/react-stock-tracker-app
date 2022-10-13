@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StockSearch } from "./StockSearch";
 import { MenuNav } from "./MenuNav";
 import { StockData } from "./StockData";
+import { LandingPage } from "./StockTracker Landing Page Components/LandingPage";
 import styles from "./App.module.css";
 
 export const StockTracker = () => {
@@ -15,23 +16,25 @@ export const StockTracker = () => {
   const [stockName, setStockName] = useState("");
 
   return (
-    <div>
-      <div className={styles.topBar}>
-        <StockSearch
-          setSearchParam={setSearchParam}
-          searchParam={searchParam}
-          stockName={stockName}
-        />
-        {searchParam !== "" && (
-          <MenuNav setPageView={setPageView} pageView={pageView} />
-        )}
-      </div>
-      <StockData
-        pageView={pageView}
+    <>
+      <StockSearch
+        setSearchParam={setSearchParam}
         searchParam={searchParam}
-        setStockName={setStockName}
         stockName={stockName}
       />
-    </div>
+      {searchParam !== "" && (
+        <MenuNav setPageView={setPageView} pageView={pageView} />
+      )}
+      {searchParam === "" ? (
+        <LandingPage />
+      ) : (
+        <StockData
+          pageView={pageView}
+          searchParam={searchParam}
+          setStockName={setStockName}
+          stockName={stockName}
+        />
+      )}
+    </>
   );
 };

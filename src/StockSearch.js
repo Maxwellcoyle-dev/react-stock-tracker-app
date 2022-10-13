@@ -5,7 +5,7 @@ import styles from "./App.module.css";
 
 export const StockSearch = (props) => {
   return (
-    <>
+    <div className={styles.topBar}>
       <SearchBar
         setSearchParam={props.setSearchParam}
         formClassName={styles.searchBarForm}
@@ -16,6 +16,6 @@ export const StockSearch = (props) => {
         searchParam={props.searchParam}
         stockName={props.stockName}
       />
-    </>
+    </div>
   );
 };

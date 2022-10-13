@@ -40,6 +40,34 @@ export const Home = (props) => {
       ],
     },
     {
+      label: "Business Profile",
+      style: styles.dataCardThree,
+      type: "data",
+      uniqueId: Math.random() * 1000,
+      dataPoints: [
+        {
+          label: "Currency",
+          value: props.stockOverviewData?.price.currency,
+          uniqueId: Math.random() * 1000,
+        },
+        {
+          label: "Exchange",
+          value: props.stockOverviewData?.quoteType.exchange,
+          uniqueId: Math.random() * 1000,
+        },
+        {
+          label: "Industry",
+          value: props.stockOverviewData?.summaryProfile.industry,
+          uniqueId: Math.random() * 1000,
+        },
+        {
+          label: "Website",
+          value: props.stockOverviewData?.summaryProfile.website,
+          uniqueId: Math.random() * 1000,
+        },
+      ],
+    },
+    {
       label: "52 Week High / Low",
       style: styles.dataCardTwo,
       type: "data",
@@ -80,51 +108,23 @@ export const Home = (props) => {
         },
       ],
     },
-    {
-      label: "Business Summary",
-      style: styles.summary,
-      type: "text",
-      uniqueId: Math.random() * 1000,
-      dataPoints: [
-        {
-          label: null,
-          value: props.stockOverviewData?.summaryProfile.longBusinessSummary,
-          uniqueId: Math.random() * 1000,
-        },
-      ],
-    },
-    {
-      label: "Business Profile",
-      style: styles.dataCardThree,
-      type: "data",
-      uniqueId: Math.random() * 1000,
-      dataPoints: [
-        {
-          label: "Currency",
-          value: props.stockOverviewData?.price.currency,
-          uniqueId: Math.random() * 1000,
-        },
-        {
-          label: "Exchange",
-          value: props.stockOverviewData?.quoteType.exchange,
-          uniqueId: Math.random() * 1000,
-        },
-        {
-          label: "Industry",
-          value: props.stockOverviewData?.summaryProfile.industry,
-          uniqueId: Math.random() * 1000,
-        },
-        {
-          label: "Website",
-          value: props.stockOverviewData?.summaryProfile.website,
-          uniqueId: Math.random() * 1000,
-        },
-      ],
-    },
+    // {
+    //   label: "Business Summary",
+    //   style: styles.summary,
+    //   type: "text",
+    //   uniqueId: Math.random() * 1000,
+    //   dataPoints: [
+    //     {
+    //       label: null,
+    //       value: props.stockOverviewData?.summaryProfile.longBusinessSummary,
+    //       uniqueId: Math.random() * 1000,
+    //     },
+    //   ],
+    // },
   ];
 
   return (
-    <div className={styles.stockDataPage}>
+    <div className={styles.homePage}>
       {props.isLoading ? (
         <SpinnerCircularSplit
           className={styles.spinner}

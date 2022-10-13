@@ -1,16 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { SpinnerCircularSplit } from "spinners-react";
-import styles from "./NewsPageStyles.css";
+import styles from "./NewsPageStyles.module.css";
+import { NewsCard } from "./news-components/NewsCard";
 
 export const News = (props) => {
-  useEffect(() => {
-    if (props.currentSearch != props.searchParam) {
-      props.fetchStockNews(props.searchParam);
-    }
-  }, [props.searchParam]);
-
   return (
-    <div>
+    <>
       {props.isLoading ? (
         <SpinnerCircularSplit
           className={styles.spinner}
@@ -21,8 +16,22 @@ export const News = (props) => {
           secondaryColor="rgba(0, 0, 0, 0.44)"
         />
       ) : (
-        <h1 style={{ color: "white", marginTop: "4rem" }}>News Page</h1>
+        <div className={styles.newsCardSection}>
+          {props.stockNewsData?.map((newsItem) => {
+            return (
+              <NewsCard
+                stockName={props.stockName}
+                title={newsItem?.title}
+                image={newsItem?.thumbnail.resolutions[0].url}
+                link={newsItem?.link}
+                publishDate={newsItem?.providerPublishTime}
+                type={newsItem?.type}
+                key={newsItem?.uuid}
+              />
+            );
+          })}
+        </div>
       )}
-    </div>
+    </>
   );
 };

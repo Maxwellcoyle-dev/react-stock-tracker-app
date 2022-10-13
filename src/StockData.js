@@ -19,6 +19,9 @@ export const StockData = (props) => {
   // Loading
   const [isLoading, setIsLoading] = useState(false);
 
+  // RapidApi Key
+  const apiKey = process.env.REACT_APP_API_SECRET;
+
   // HOME PAGE - Stock Overview Data Fetching
   const [stockOverviewData, setStockOverviewData] = useState(null);
   const [currentSearch, setCurrentSearch] = useState("");
@@ -29,10 +32,10 @@ export const StockData = (props) => {
 
     const options = {
       method: "GET",
-      url: "https://yh-finance.p.rapidapi.com/stock/v2/get-summary",
+      url: `https://yh-finance.p.rapidapi.com/stock/v2/get-summary`,
       params: { symbol: param },
       headers: {
-        "X-RapidAPI-Key": "0327aa61b5msh24f690832314c8ep152dcajsn4076cff7ccf6",
+        "X-RapidAPI-Key": `${apiKey}`,
         "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
       },
     };
@@ -54,8 +57,9 @@ export const StockData = (props) => {
 
   useEffect(() => {
     console.log("Component Mounted");
-    if (currentSearch != props.searchParam) {
+    if (currentSearch !== props.searchParam) {
       fetchStockOverview(props.searchParam);
+      fetchStockNews(props.searchParam);
     }
   }, [props.searchParam]);
 
@@ -75,7 +79,7 @@ export const StockData = (props) => {
     console.log("fetch fired");
     const options = {
       method: "GET",
-      url: "https://yh-finance.p.rapidapi.com/stock/v3/get-chart",
+      url: `https://yh-finance.p.rapidapi.com/stock/v3/get-chart`,
       params: {
         interval: stockChartRange.interval,
         symbol: param,
@@ -86,7 +90,7 @@ export const StockData = (props) => {
         events: "capitalGain,div,split",
       },
       headers: {
-        "X-RapidAPI-Key": "0327aa61b5msh24f690832314c8ep152dcajsn4076cff7ccf6",
+        "X-RapidAPI-Key": `${apiKey}`,
         "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
       },
     };
@@ -127,22 +131,23 @@ export const StockData = (props) => {
   // Store data from fetchStockNewsData
   const [stockNewsData, setStockNewsData] = useState(null);
 
-  const fetchStockNews = () => {
+  const fetchStockNews = (param) => {
     setIsLoading(true);
+
     const options = {
       method: "GET",
-      url: "https://bloomberg-market-and-financial-news.p.rapidapi.com/market/auto-complete",
-      params: { query: props.searchParam },
+      url: `https://yh-finance.p.rapidapi.com/auto-complete`,
+      params: { q: param },
       headers: {
-        "X-RapidAPI-Key": "0327aa61b5msh24f690832314c8ep152dcajsn4076cff7ccf6",
-        "X-RapidAPI-Host": "bloomberg-market-and-financial-news.p.rapidapi.com",
+        "X-RapidAPI-Key": `${apiKey}`,
+        "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
       },
     };
 
     Axios.request(options)
       .then(function (response) {
-        console.log(response.data);
-        setStockNewsData(response.data);
+        console.log(response);
+        setStockNewsData(response.data.news);
       })
       .catch(function (error) {
         console.error(error);
@@ -182,9 +187,11 @@ export const StockData = (props) => {
       {news && (
         <News
           searchParam={props.searchParam}
+          stockName={props.stockName}
           fetchStockNews={fetchStockNews}
           isLoading={isLoading}
           currentSearch={currentSearch}
+          stockNewsData={stockNewsData}
         />
       )}
     </div>

@@ -34,7 +34,7 @@ export const StockChart = (props) => {
           secondaryColor="rgba(0, 0, 0, 0.44)"
         />
       ) : (
-        <ResponsiveContainer width="100%" aspect={16 / 8}>
+        <ResponsiveContainer width="100%" aspect={16 / 6}>
           <AreaChart
             data={props.chartData}
             margin={{

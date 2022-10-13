@@ -2,13 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .App {
   text-align: center;
   background-color: #333333;
   min-height: 100vh;
-  padding: 2rem;
+  max-width: 100vw;
 }
 
 /* Stock Search Styles */
@@ -17,7 +18,6 @@
   padding: 3rem;
   display: flex;
   align-items: center;
-  column-gap: 3rem;
   width: 100%;
 }
 
@@ -42,10 +42,26 @@
   color: white;
 }
 
+/* Landing Page  */
+.landingPage {
+  width: inherit;
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.landingPage img {
+  width: 100%;
+  height: auto;
+  padding-top: 4rem;
+}
+
 /* Menu Styles */
 
 .menuNav {
-  margin: auto;
+  margin-left: 3rem;
   padding: 1rem;
   background-color: #241f2a;
   width: min-content;
@@ -57,7 +73,7 @@
 .menuNavItem {
   background-color: #241f2a;
   border: none;
-  padding: 1rem 4rem;
+  padding: 0.5rem 2rem;
   color: white;
   cursor: pointer;
   transition: 0.5s;
@@ -72,12 +88,12 @@
   background-color: #3f6eff;
   border: none;
   border-radius: 0.75rem;
-  padding: 1rem 4rem;
+  padding: 0.5rem 2rem;
   color: white;
   cursor: pointer;
 }
 
 .icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }

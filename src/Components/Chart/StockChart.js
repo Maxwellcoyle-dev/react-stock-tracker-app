@@ -8,7 +8,7 @@ export const StockChart = () => {
 
   return (
     <div className={styles.chartArea}>
-      <ChartHeader />
+      <ChartHeader metric={metric} setMetric={setMetric} />
       <Chart metric={metric} setMetric={setMetric} />
     </div>
   );

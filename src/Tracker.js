@@ -21,11 +21,9 @@ export const Tracker = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState("");
 
-  const apiKey = process.env.REACT_APP_API_SECRET;
+  const apiSecret = process.env.REACT_APP_API_SECRET;
 
-  useEffect(() => {}, []);
-
-  const getSummaryData = () => {
+  useEffect(() => {
     if (searchParam !== "") {
       setIsLoading(true);
 
@@ -34,7 +32,7 @@ export const Tracker = () => {
         url: "https://yh-finance.p.rapidapi.com/stock/v2/get-summary",
         params: { symbol: searchParam },
         headers: {
-          "X-RapidAPI-Key": `${apiKey}`,
+          "X-RapidAPI-Key": `${apiSecret}`,
           "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
         },
       };
@@ -50,61 +48,61 @@ export const Tracker = () => {
           setIsLoading(false);
         });
     }
-  };
+  }, [searchParam]);
 
-  const getChartData = () => {
-    const apiKey = process.env.REACT_APP_API_SECRET;
-    setSummaryData(null);
+  useEffect(() => {
+    if (searchParam !== "") {
+      const options = {
+        method: "GET",
+        url: `https://yh-finance.p.rapidapi.com/stock/v3/get-chart`,
+        params: {
+          interval: stockChartParams.interval,
+          symbol: searchParam,
+          range: stockChartParams.range,
+          includePrePost: "false",
+          useYfid: "true",
+          includeAdjustedClose: "true",
+          events: "capitalGain,div,split",
+        },
+        headers: {
+          "X-RapidAPI-Key": `${apiSecret}`,
+          "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
+        },
+      };
 
-    const options = {
-      method: "GET",
-      url: `https://yh-finance.p.rapidapi.com/stock/v3/get-chart`,
-      params: {
-        interval: stockChartParams.interval,
-        symbol: searchParam,
-        range: stockChartParams.range,
-        includePrePost: "false",
-        useYfid: "true",
-        includeAdjustedClose: "true",
-        events: "capitalGain,div,split",
-      },
-      headers: {
-        "X-RapidAPI-Key": `${apiKey}`,
-        "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
-      },
-    };
-
-    Axios.request(options)
-      .then((response) => {
-        console.log("fired fetch Chart Data statement");
-        let newData = [];
-        for (
-          let i = 0;
-          i < response.data.chart.result[0].timestamp.length;
-          i++
-        ) {
-          newData = [
-            ...newData,
-            {
-              time: new Intl.DateTimeFormat("en-US").format(
-                response.data.chart.result[0].timestamp[i] * 1000
-              ),
-              high: response.data.chart.result[0].indicators.quote[0].high[i],
-              low: response.data.chart.result[0].indicators.quote[0].low[i],
-              open: response.data.chart.result[0].indicators.quote[0].open[i],
-              close: response.data.chart.result[0].indicators.quote[0].close[i],
-            },
-          ];
-        }
-        setChartData(newData);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
+      Axios.request(options)
+        .then((response) => {
+          console.log("fired fetch Chart Data statement");
+          let newData = [];
+          for (
+            let i = 0;
+            i < response.data.chart.result[0].timestamp.length;
+            i++
+          ) {
+            newData = [
+              ...newData,
+              {
+                time: new Intl.DateTimeFormat("en-US").format(
+                  response.data.chart.result[0].timestamp[i] * 1000
+                ),
+                high: response.data.chart.result[0].indicators.quote[0].high[i],
+                low: response.data.chart.result[0].indicators.quote[0].low[i],
+                open: response.data.chart.result[0].indicators.quote[0].open[i],
+                close:
+                  response.data.chart.result[0].indicators.quote[0].close[i],
+              },
+            ];
+          }
+          setChartData(newData);
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  }, [searchParam, stockChartParams]);
 
   return (
     <searchContext.Provider
@@ -117,8 +115,8 @@ export const Tracker = () => {
         setChartData,
         summaryData,
         setSummaryData,
-        getChartData,
-        getSummaryData,
+        isLoading,
+        setIsLoading,
         page,
         setPage,
       }}

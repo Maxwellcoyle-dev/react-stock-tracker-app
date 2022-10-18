@@ -8,7 +8,11 @@ export const SearchBarData = () => {
   return (
     <div className={styles.searchBarData}>
       <div className={styles.searchBarLogoDiv}>
-        <a href={summaryData?.summaryProfile.website} target="_blank">
+        <a
+          href={summaryData?.summaryProfile.website}
+          target="_blank"
+          rel="noreferrer"
+        >
           <img
             src={`https://api.companyurlfinder.com/logo/${summaryData?.summaryProfile.website.slice(
               12

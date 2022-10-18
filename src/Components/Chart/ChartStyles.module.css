@@ -1,0 +1,96 @@
+/* CHART STYLES */
+
+.chartArea {
+  background-color: #333333;
+  border-radius: 0.2rem;
+}
+
+.chartHeader {
+  margin: auto;
+  padding: 1rem 2rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0.5rem;
+  color: white;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stockName {
+  grid-row: 1 / 3;
+  text-align: left;
+}
+
+.chart {
+  max-height: 75%;
+}
+
+.rangeSelector {
+  width: fit-content;
+  height: 30px;
+  grid-column: 2 / 3;
+  display: flex;
+  justify-self: flex-end;
+}
+
+.metricSelector {
+  width: fit-content;
+  height: 30px;
+  grid-column: 2 / 3;
+  display: flex;
+  justify-self: flex-end;
+}
+
+.tooltip {
+  width: min-content;
+  border-radius: 0.25rem;
+  background-color: #26313c;
+  color: #fff;
+  padding: 1rem;
+  box-shadow: 15px 30px 40px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.selectorButton {
+  border: none;
+  background-color: transparent;
+  color: #979898;
+  padding-right: 1rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.selectorButtonSelected {
+  border: none;
+  background-color: transparent;
+  color: white;
+  padding-right: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mSelector {
+  border: none;
+  background-color: transparent;
+  color: #979898;
+  padding-right: 1rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.mSelectorSelected {
+  border: none;
+  background-color: transparent;
+  color: white;
+  padding-right: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.spinner {
+  padding: 10rem;
+  margin: auto;
+}

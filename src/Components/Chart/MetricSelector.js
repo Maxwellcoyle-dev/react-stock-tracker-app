@@ -1,6 +1,6 @@
 import React from "react";
 import { MSelector } from "./MSelector";
-import styles from "../DataPageStyles.module.css";
+import styles from "./ChartStyles.module.css";
 
 export const MetricSelector = (props) => {
   const metrics = [

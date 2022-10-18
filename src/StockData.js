@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Home } from "./StockData Components/Home";
-import { Data } from "./StockData Components/Data";
-import { News } from "./StockData Components/News";
 import Axios from "axios";
 
 export const StockData = (props) => {
@@ -26,43 +23,6 @@ export const StockData = (props) => {
   const [stockOverviewData, setStockOverviewData] = useState(null);
   const [currentSearch, setCurrentSearch] = useState("");
 
-  const fetchStockOverview = (param) => {
-    setCurrentSearch(props.searchParam);
-    setIsLoading(true);
-
-    const options = {
-      method: "GET",
-      url: `https://yh-finance.p.rapidapi.com/stock/v2/get-summary`,
-      params: { symbol: param },
-      headers: {
-        "X-RapidAPI-Key": `${apiKey}`,
-        "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
-      },
-    };
-
-    Axios.request(options)
-      .then((response) => {
-        console.log("fetch fired");
-        console.log(response.data);
-        setStockOverviewData(response.data);
-        props.setStockName(response.data.quoteType.longName);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  useEffect(() => {
-    console.log("Component Mounted");
-    if (currentSearch !== props.searchParam) {
-      fetchStockOverview(props.searchParam);
-      fetchStockNews(props.searchParam);
-    }
-  }, [props.searchParam]);
-
   // DATA PAGE - Fetch Stock Price Data for Chart
   // Store data from fetchStockPriceData
   const [chartData, setChartData] = useState(null);
@@ -73,127 +33,59 @@ export const StockData = (props) => {
   });
   const [checkRangeParams, setCheckRangeParams] = useState(null);
 
-  const fetchStockPriceData = (param) => {
-    setCurrentSearch(props.searchParam);
-    setIsLoading(true);
-    console.log("fetch fired");
-    const options = {
-      method: "GET",
-      url: `https://yh-finance.p.rapidapi.com/stock/v3/get-chart`,
-      params: {
-        interval: stockChartRange.interval,
-        symbol: param,
-        range: stockChartRange.range,
-        includePrePost: "false",
-        useYfid: "true",
-        includeAdjustedClose: "true",
-        events: "capitalGain,div,split",
-      },
-      headers: {
-        "X-RapidAPI-Key": `${apiKey}`,
-        "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
-      },
-    };
+  // const fetchStockPriceData = (param) => {
+  //   setCurrentSearch(props.searchParam);
+  //   setIsLoading(true);
+  //   console.log("fetch fired");
+  //   const options = {
+  //     method: "GET",
+  //     url: `https://yh-finance.p.rapidapi.com/`,
+  //     params: {
+  //       interval: stockChartRange.interval,
+  //       symbol: param,
+  //       range: stockChartRange.range,
+  //       includePrePost: "false",
+  //       useYfid: "true",
+  //       includeAdjustedClose: "true",
+  //       events: "capitalGain,div,split",
+  //     },
+  //     headers: {
+  //       "X-RapidAPI-Key": `${apiKey}`,
+  //       "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
+  //     },
+  //   };
 
-    Axios.request(options)
-      .then(function (response) {
-        console.log(response.data);
-        let newData = [];
-        for (
-          let i = 0;
-          i < response.data.chart.result[0].timestamp.length;
-          i++
-        ) {
-          newData = [
-            ...newData,
-            {
-              time: new Intl.DateTimeFormat("en-US").format(
-                response.data.chart.result[0].timestamp[i] * 1000
-              ),
-              high: response.data.chart.result[0].indicators.quote[0].high[i],
-              low: response.data.chart.result[0].indicators.quote[0].low[i],
-              open: response.data.chart.result[0].indicators.quote[0].open[i],
-              close: response.data.chart.result[0].indicators.quote[0].close[i],
-            },
-          ];
-        }
-        setChartData(newData);
-      })
-      .catch(function (error) {
-        console.error(error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
+  //   Axios.request(options)
+  //     .then(function (response) {
+  //       console.log(response.data);
+  //       let newData = [];
+  //       for (
+  //         let i = 0;
+  //         i < response.data.chart.result[0].timestamp.length;
+  //         i++
+  //       ) {
+  //         newData = [
+  //           ...newData,
+  //           {
+  //             time: new Intl.DateTimeFormat("en-US").format(
+  //               response.data.chart.result[0].timestamp[i] * 1000
+  //             ),
+  //             high: response.data.chart.result[0].indicators.quote[0].high[i],
+  //             low: response.data.chart.result[0].indicators.quote[0].low[i],
+  //             open: response.data.chart.result[0].indicators.quote[0].open[i],
+  //             close: response.data.chart.result[0].indicators.quote[0].close[i],
+  //           },
+  //         ];
+  //       }
+  //       setChartData(newData);
+  //     })
+  //     .catch(function (error) {
+  //       console.error(error);
+  //     })
+  //     .finally(() => {
+  //       setIsLoading(false);
+  //     });
+  // };
 
-  // NEWS PAGE - Fetch Stock news Data
-  // Store data from fetchStockNewsData
-  const [stockNewsData, setStockNewsData] = useState(null);
-
-  const fetchStockNews = (param) => {
-    setIsLoading(true);
-
-    const options = {
-      method: "GET",
-      url: `https://yh-finance.p.rapidapi.com/auto-complete`,
-      params: { q: param },
-      headers: {
-        "X-RapidAPI-Key": `${apiKey}`,
-        "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
-      },
-    };
-
-    Axios.request(options)
-      .then(function (response) {
-        console.log(response);
-        setStockNewsData(response.data.news);
-      })
-      .catch(function (error) {
-        console.error(error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  return (
-    <div>
-      {home && (
-        <Home
-          searchParam={props.searchParam}
-          stockName={props.stockName}
-          fetchStockOverview={fetchStockOverview}
-          stockOverviewData={stockOverviewData}
-          setStockOverviewData={setStockOverviewData}
-          currentSearch={currentSearch}
-          isLoading={isLoading}
-        />
-      )}
-      {data && (
-        <Data
-          searchParam={props.searchParam}
-          stockName={props.stockName}
-          fetchStockPriceData={fetchStockPriceData}
-          isLoading={isLoading}
-          chartData={chartData}
-          currentSearch={currentSearch}
-          stockChartRange={stockChartRange}
-          setStockChartRange={setStockChartRange}
-          checkRangeParams={checkRangeParams}
-          setCheckRangeParams={setCheckRangeParams}
-        />
-      )}
-      {news && (
-        <News
-          searchParam={props.searchParam}
-          stockName={props.stockName}
-          fetchStockNews={fetchStockNews}
-          isLoading={isLoading}
-          currentSearch={currentSearch}
-          stockNewsData={stockNewsData}
-        />
-      )}
-    </div>
-  );
+  return <div></div>;
 };

@@ -1,13 +1,16 @@
-import React from "react";
-import styles from "../DataPageStyles.module.css";
+import React, { useContext } from "react";
+import { searchContext } from "../../Helper/Context";
+import styles from "./ChartStyles.module.css";
 
 export const RSelector = (props) => {
+  const { setStockChartParams, stockChartParams } = useContext(searchContext);
+
   const handleClick = () => {
-    props.setStockChartRange({
-      searchParam: props.searchParam,
-      range: props.range,
+    setStockChartParams({
       interval: props.interval,
+      range: props.range,
     });
+    console.log(stockChartParams);
   };
 
   return (
@@ -17,7 +20,6 @@ export const RSelector = (props) => {
           ? styles.selectorButtonSelected
           : styles.selectorButton
       }
-      key={props.uniqueId}
       onClick={handleClick}
     >
       {props.range}

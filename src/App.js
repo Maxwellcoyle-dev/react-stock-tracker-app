@@ -1,10 +1,10 @@
 import styles from "./App.module.css";
-import { StockTracker } from "./StockTracker";
+import { Tracker } from "./Tracker.js";
 
 function App() {
   return (
     <div className={styles.App}>
-      <StockTracker />
+      <Tracker />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../DataPageStyles.module.css";
+import styles from "./ChartStyles.module.css";
 
 export const MSelector = (props) => {
   const handleClick = () => {
@@ -9,7 +9,6 @@ export const MSelector = (props) => {
   return (
     <button
       className={props.selected ? styles.mSelectorSelected : styles.mSelector}
-      key={props.key}
       onClick={handleClick}
     >
       {props.name.toUpperCase()}

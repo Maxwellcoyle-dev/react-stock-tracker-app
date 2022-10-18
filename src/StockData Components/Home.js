@@ -1,6 +1,5 @@
 import React from "react";
 import { DataCategory } from "./home-components/DataCategory";
-import { SpinnerCircularSplit } from "spinners-react";
 import styles from "./HomePageStyles.module.css";
 
 export const Home = (props) => {
@@ -125,28 +124,17 @@ export const Home = (props) => {
 
   return (
     <div className={styles.homePage}>
-      {props.isLoading ? (
-        <SpinnerCircularSplit
-          className={styles.spinner}
-          size={80}
-          thickness={150}
-          speed={100}
-          color="rgba(63, 110, 255, 1)"
-          secondaryColor="rgba(0, 0, 0, 0.44)"
-        />
-      ) : (
-        dataCategories.map((category) => {
-          return (
-            <DataCategory
-              type={category.type}
-              className={category.style}
-              key={category.uniqueId}
-              label={category.label}
-              dataPoints={category.dataPoints}
-            />
-          );
-        })
-      )}
+      {dataCategories.map((category) => {
+        return (
+          <DataCategory
+            type={category.type}
+            className={category.style}
+            key={category.uniqueId}
+            label={category.label}
+            dataPoints={category.dataPoints}
+          />
+        );
+      })}
     </div>
   );
 };

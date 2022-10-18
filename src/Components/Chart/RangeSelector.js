@@ -1,44 +1,47 @@
-import React from "react";
+import React, { useContext } from "react";
+import { searchContext } from "../../Helper/Context";
 import { RSelector } from "./RSelector.js";
-import styles from "../DataPageStyles.module.css";
+import styles from "./ChartStyles.module.css";
 
-export const RangeSelector = (props) => {
+export const RangeSelector = () => {
+  const { stockChartParams } = useContext(searchContext);
+
   const selectors = [
     {
       range: "1mo",
       interval: "1d",
       id: Math.random() * 1000,
-      selected: props.stockChartRange.range === "1mo" ? true : false,
+      selected: stockChartParams.range === "1mo" ? true : false,
     },
     {
       range: "3mo",
       interval: "1wk",
       id: Math.random() * 1000,
-      selected: props.stockChartRange.range === "3mo" ? true : false,
+      selected: stockChartParams.range === "3mo" ? true : false,
     },
     {
       range: "6mo",
       interval: "1wk",
       id: Math.random() * 1000,
-      selected: props.stockChartRange.range === "6mo" ? true : false,
+      selected: stockChartParams.range === "6mo" ? true : false,
     },
     {
       range: "1y",
       interval: "1mo",
       id: Math.random() * 1000,
-      selected: props.stockChartRange.range === "1y" ? true : false,
+      selected: stockChartParams.range === "1y" ? true : false,
     },
     {
       range: "2y",
       interval: "1mo",
       id: Math.random() * 1000,
-      selected: props.stockChartRange.range === "2y" ? true : false,
+      selected: stockChartParams.range === "2y" ? true : false,
     },
     {
       range: "max",
       interval: "1mo",
       id: Math.random() * 1000,
-      selected: props.stockChartRange.range === "max" ? true : false,
+      selected: stockChartParams.range === "max" ? true : false,
     },
   ];
 
@@ -48,10 +51,9 @@ export const RangeSelector = (props) => {
         return (
           <RSelector
             range={item.range}
-            uniqueId={item.id}
+            key={item.id}
             selected={item.selected}
             interval={item.interval}
-            setStockChartRange={props.setStockChartRange}
           />
         );
       })}

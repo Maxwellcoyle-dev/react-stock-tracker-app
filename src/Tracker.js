@@ -10,6 +10,7 @@ import Axios from "axios";
 export const Tracker = () => {
   // Used to get the search parameter for fetching stock data
   const [searchParam, setSearchParam] = useState("");
+  const [searchParamLogo, setsearchParamLogo] = useState("");
 
   const [stockChartParams, setStockChartParams] = useState({
     interval: "1mo",
@@ -43,12 +44,20 @@ export const Tracker = () => {
         })
         .catch(function (error) {
           console.error(error);
-        })
-        .finally(() => {
-          setIsLoading(false);
         });
     }
   }, [searchParam]);
+
+  useEffect(() => {
+    if (summaryData) {
+      setsearchParamLogo(
+        `https://api.companyurlfinder.com/logo/${summaryData?.summaryProfile.website.slice(
+          12
+        )}`
+      );
+      setIsLoading(false);
+    }
+  }, [summaryData]);
 
   useEffect(() => {
     if (searchParam !== "") {
@@ -119,6 +128,7 @@ export const Tracker = () => {
         setIsLoading,
         page,
         setPage,
+        searchParamLogo,
       }}
     >
       <SearchBar />

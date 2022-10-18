@@ -3,7 +3,7 @@ import { searchContext } from "../../Helper/Context";
 import styles from "../../App.module.css";
 
 export const SearchBarData = () => {
-  const { summaryData } = useContext(searchContext);
+  const { summaryData, searchParamLogo } = useContext(searchContext);
 
   return (
     <div className={styles.searchBarData}>
@@ -14,9 +14,7 @@ export const SearchBarData = () => {
           rel="noreferrer"
         >
           <img
-            src={`https://api.companyurlfinder.com/logo/${summaryData?.summaryProfile.website.slice(
-              12
-            )}`}
+            src={searchParamLogo}
             alt="company logo, provided by CUF Services 'https://companyurlfinder.com'"
           />
         </a>

@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styles from "./PanelStyles.module.css";
 import { searchContext } from "../../Helper/Context";
 import { PanelData } from "./PanelData";
 import { SpinnerCircular } from "spinners-react";
 
 export const Panel = () => {
-  const { searchParam, setSummaryData, isLoading } = useContext(searchContext);
+  const { isLoading } = useContext(searchContext);
 
   return (
     <div className={styles.panel}>

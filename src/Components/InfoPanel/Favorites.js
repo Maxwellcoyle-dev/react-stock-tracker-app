@@ -7,10 +7,18 @@ export const Favorites = (props) => {
     <div className={styles.favorites}>
       <h3>Favorites</h3>
       <div className={styles.favoriteListLabel}>
-        <h4>Sym</h4>
-        <p>Price</p>
-        <p>Chg</p>
-        <p>Chg%</p>
+        {props.favorites.length > 0 ? (
+          <>
+            <h4>Sym</h4>
+            <p>Price</p>
+            <p>Chg</p>
+            <p>Chg%</p>
+          </>
+        ) : (
+          <>
+            <h4>Click the star to add a favorite.</h4>
+          </>
+        )}
       </div>
       {props.favorites?.map((item) => {
         return (

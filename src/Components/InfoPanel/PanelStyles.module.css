@@ -5,26 +5,34 @@
   align-items: "center";
   justify-content: "center";
   height: "100%";
-  margin: 5rem;
+  margin: 50%;
+  text-align: center;
 }
 
-/* Panel Styles */
+/* Panel Styles Main containers */
 
 .panel {
-  min-width: fit-content;
-  max-width: 100%;
-  height: auto;
-  background-color: #333333;
+  height: calc(100vh - 4rem);
   color: white;
   border-radius: 0.2rem;
-  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .panelDataDiv {
-  position: relative;
-  margin-bottom: 2rem;
-  padding-top: 0.5rem;
-  border-top: 0.5px solid #aeaeae;
+  padding: 2rem 1rem 3rem 1rem;
+  background-color: #333333;
+  overflow-y: auto;
+}
+
+.favorites {
+  color: white;
+  background-color: #333333;
+  padding: 1rem;
+  text-align: left;
+  min-height: max-content;
 }
 
 /* PanelHeader */
@@ -116,8 +124,8 @@
 /* favorites */
 
 .favorites {
-  height: auto;
   color: white;
+  background-color: #333333;
   padding-bottom: 1.5rem;
   text-align: left;
 }

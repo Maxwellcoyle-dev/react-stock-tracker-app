@@ -3,6 +3,7 @@
 .chartArea {
   background-color: #333333;
   border-radius: 0.2rem;
+  width: 80%;
 }
 
 .chartHeader {

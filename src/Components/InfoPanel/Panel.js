@@ -12,9 +12,7 @@ export const Panel = () => {
 
   return (
     <div className={styles.panel}>
-      {favorites.length > 0 && (
-        <Favorites favorites={favorites} setFavorites={setFavorites} />
-      )}
+      <Favorites favorites={favorites} setFavorites={setFavorites} />
 
       {isLoading ? (
         <div className={styles.spinner}>

@@ -152,15 +152,23 @@
   padding-top: 4rem;
 }
 
+/* StockView Page Styles */
+.split {
+  width: 100vw;
+  height: calc(100vh - 4rem);
+  display: flex;
+  margin: 0.25rem;
+}
+
 /* Stock Chart Styles */
 
-.stockChart {
+/* .stockChart {
   display: grid;
   grid-template-columns: 1.5fr 0.5fr;
   column-gap: 0.25rem;
   margin: 0.25rem;
   overflow: hidden;
-}
+} */
 
 /* CHART STYLES */
 

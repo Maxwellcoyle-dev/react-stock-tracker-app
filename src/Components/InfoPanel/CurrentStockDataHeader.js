@@ -1,14 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { searchContext } from "../../Helper/Context";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import styles from "./PanelStyles.module.css";
 
 export const CurrentStockDataHeader = (props) => {
   const { summaryData, searchParamLogo } = useContext(searchContext);
+  const [isStarred, setIsStarred] = useState(false);
 
   // Add a new favorite to the favorite list
   const addFav = (event) => {
     event.preventDefault();
+    setIsStarred(true);
     // New Favorite item to be added
     const newFav = {
       symbol: summaryData?.symbol,
@@ -30,6 +32,19 @@ export const CurrentStockDataHeader = (props) => {
     }
   };
 
+  const removeFav = () => {
+    props.setFavorites(
+      props.favorites.filter((fav) => fav.symbol !== summaryData?.symbol)
+    );
+  };
+
+  useEffect(() => {
+    const checkIfFav = props.favorites.some(
+      (fav) => fav.symbol === summaryData?.symbol
+    );
+    setIsStarred(checkIfFav);
+  }, [props.favorites]);
+
   return (
     <div className={styles.panelDataHeader}>
       <a
@@ -43,7 +58,11 @@ export const CurrentStockDataHeader = (props) => {
         />
       </a>
       <h3>{summaryData?.quoteType.shortName}</h3>
-      <AiOutlineStar className={styles.star} onClick={addFav} />
+      {isStarred ? (
+        <AiFillStar className={styles.star} onClick={removeFav} />
+      ) : (
+        <AiOutlineStar className={styles.star} onClick={addFav} />
+      )}
     </div>
   );
 };

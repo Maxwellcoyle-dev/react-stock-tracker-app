@@ -26,6 +26,7 @@ export const Tracker = () => {
 
   useEffect(() => {
     if (searchParam !== "") {
+      console.log("fetch summar data");
       setIsLoading(true);
 
       const options = {
@@ -50,6 +51,7 @@ export const Tracker = () => {
 
   useEffect(() => {
     if (summaryData) {
+      console.log("fetch logo");
       setsearchParamLogo(
         `https://api.companyurlfinder.com/logo/${summaryData?.summaryProfile.website.slice(
           12
@@ -61,6 +63,7 @@ export const Tracker = () => {
 
   useEffect(() => {
     if (searchParam !== "") {
+      console.log("fetch chart data");
       const options = {
         method: "GET",
         url: `https://yh-finance.p.rapidapi.com/stock/v3/get-chart`,
@@ -81,7 +84,6 @@ export const Tracker = () => {
 
       Axios.request(options)
         .then((response) => {
-          console.log("fired fetch Chart Data statement");
           let newData = [];
           for (
             let i = 0;
@@ -106,9 +108,6 @@ export const Tracker = () => {
         })
         .catch((error) => {
           console.error(error);
-        })
-        .finally(() => {
-          setIsLoading(false);
         });
     }
   }, [searchParam, stockChartParams]);

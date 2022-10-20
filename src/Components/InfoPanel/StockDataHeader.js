@@ -3,7 +3,7 @@ import { searchContext } from "../../Helper/Context";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import styles from "./PanelStyles.module.css";
 
-export const CurrentStockDataHeader = (props) => {
+export const StockDataHeader = (props) => {
   const { summaryData, searchParamLogo } = useContext(searchContext);
   const [isStarred, setIsStarred] = useState(false);
 

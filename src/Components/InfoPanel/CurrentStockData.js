@@ -1,14 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { searchContext } from "../../Helper/Context";
-
-import { SpinnerCircular } from "spinners-react";
-import styles from "./PanelStyles.module.css";
-
 import { StockDataCard } from "./StockDataCard";
 import { StockNewsCard } from "./StockNewsCard";
+import { StockDataHeader } from "./StockDataHeader";
+import { SpinnerCircular } from "spinners-react";
+import { CardToggle } from "./CardToggle";
+import styles from "./PanelStyles.module.css";
 
 export const CurrentStockData = (props) => {
-  const { summaryData, isLoading } = useContext(searchContext);
+  const { summaryData, isLoading, searchParamLogo } = useContext(searchContext);
+  const [selected, setSelected] = useState("data");
 
   return (
     <div className={styles.panelDataDiv}>
@@ -24,11 +25,19 @@ export const CurrentStockData = (props) => {
         </div>
       ) : (
         <div className={styles.currentStockData}>
-          <StockDataCard
+          <StockDataHeader
             favorites={props.favorites}
             setFavorites={props.setFavorites}
           />
-          <StockNewsCard />
+          <CardToggle selected={selected} setSelected={setSelected} />
+          {selected === "data" ? (
+            <StockDataCard
+              favorites={props.favorites}
+              setFavorites={props.setFavorites}
+            />
+          ) : (
+            <StockNewsCard />
+          )}
         </div>
       )}
     </div>

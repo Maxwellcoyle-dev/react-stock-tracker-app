@@ -59,7 +59,7 @@ export const CurrentStockDataHeader = (props) => {
       </a>
       <h3>{summaryData?.quoteType.shortName}</h3>
       {isStarred ? (
-        <AiFillStar className={styles.star} onClick={removeFav} />
+        <AiFillStar className={styles.starred} onClick={removeFav} />
       ) : (
         <AiOutlineStar className={styles.star} onClick={addFav} />
       )}

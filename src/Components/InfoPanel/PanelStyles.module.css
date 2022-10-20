@@ -25,6 +25,9 @@
   padding: 2rem 1rem 3rem 1rem;
   background-color: #333333;
   overflow-y: auto;
+  overflow-x: hidden;
+  height: auto;
+  resize: vertical;
 }
 
 .favorites {
@@ -32,15 +35,19 @@
   background-color: #333333;
   padding: 1rem;
   text-align: left;
-  min-height: max-content;
+  min-height: 20%;
+  max-height: 40%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  resize: vertical;
 }
 
 /* PanelHeader */
 .panelDataHeader {
-  width: auto;
+  width: 100%;
   display: flex;
   align-items: center;
-  column-gap: 1rem;
+  column-gap: 0.5rem;
   margin-bottom: 1.5rem;
   text-align: left;
 }
@@ -48,6 +55,7 @@
 .panelDataHeader h2 {
   text-align: left;
   font-size: 1rem;
+  width: fit-content;
 }
 
 .panelDataHeader a {
@@ -66,7 +74,36 @@
   height: 2.25rem;
 }
 
+.star:hover {
+  color: gold;
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+.starred {
+  cursor: pointer;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: gold;
+}
+
+.starred {
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
 /* Panel Body */
+
+.panelDataDiv::-webkit-scrollbar {
+  width: 0.75rem;
+  background-color: #aeaeae;
+  border-radius: 0.5rem;
+}
+
+.panelDataDiv::-webkit-scrollbar-thumb {
+  background-color: #424242;
+  border-radius: 0.5rem;
+}
 
 .panelSubHeader {
   display: flex;
@@ -123,12 +160,17 @@
 
 /* favorites */
 
-.favorites {
-  color: white;
-  background-color: #333333;
-  padding-bottom: 1.5rem;
-  text-align: left;
+.favorites::-webkit-scrollbar {
+  width: 0.75rem;
+  background-color: #aeaeae;
+  border-radius: 0.5rem;
 }
+
+.favorites::-webkit-scrollbar-thumb {
+  background-color: #424242;
+  border-radius: 0.5rem;
+}
+
 .favorites p {
   font-size: 0.85rem;
 }
@@ -143,27 +185,26 @@
   color: #aeaeae;
   padding-top: 0.5rem;
   margin-bottom: 1rem;
-  border-bottom: 0.5px solid #aeaeae;
   text-align: left;
+  width: calc(100% - 1rem);
 }
 
 .favoriteItem {
   display: flex;
+  justify-content: space-between;
   width: 100%;
-  height: min-content;
   align-items: center;
-  padding: 0.1rem 0.3rem;
   margin: 0.25rem 0;
   line-height: auto;
 }
 
 .favoriteItemData {
-  height: 100%;
   display: flex;
   text-align: left;
   cursor: pointer;
   transition: 0.2s;
   align-items: center;
+  padding: 0.2rem;
 }
 
 .favoriteItemData:hover {
@@ -172,12 +213,13 @@
 }
 
 .removeIcon {
-  width: auto;
   border-radius: 0.1rem;
   cursor: pointer;
+  width: min-content;
+  margin: 0.2rem;
 }
 
 .removeIcon:hover {
   background-color: #333;
-  color: rgb(28, 107, 107);
+  color: red;
 }

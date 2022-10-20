@@ -5,7 +5,7 @@ import styles from "./PanelStyles.module.css";
 export const Favorites = (props) => {
   return (
     <div className={styles.favorites}>
-      <h3>Favorites</h3>
+      <h3>Watch List</h3>
       <div className={styles.favoriteListLabel}>
         {props.favorites.length > 0 ? (
           <>
@@ -16,7 +16,7 @@ export const Favorites = (props) => {
           </>
         ) : (
           <>
-            <h4>Click the star to add a favorite.</h4>
+            <h4>Click the star to add a symbol to your Watch List.</h4>
           </>
         )}
       </div>

@@ -26,7 +26,7 @@ export const SearchForm = () => {
       <input
         className={styles.searchInput}
         type="text"
-        placeholder="Enter Stock Symbol"
+        placeholder="Tech"
         onChange={handleChange}
       />
       <button className={styles.searchSubmit} type="submit">

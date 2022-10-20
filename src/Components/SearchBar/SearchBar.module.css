@@ -1,0 +1,173 @@
+/* * Stock Search Styles */
+
+.searchBar {
+  height: 4rem;
+  display: flex;
+  align-items: top;
+  background-color: #333333;
+  margin: 0.25rem;
+  border-radius: 0.2rem;
+  padding: 1rem 2rem;
+}
+
+.searchBarFormContainer {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  flex-direction: column;
+  top: 0;
+  text-align: left;
+  width: 50%;
+}
+
+.searchBarForm {
+  position: absolute;
+  display: flex;
+  width: auto;
+  height: 2rem;
+  column-gap: 1rem;
+}
+
+.searchBarData {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  column-gap: 2rem;
+  align-items: center;
+  max-width: 40%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 1100px) {
+  .searchBarData {
+    display: none;
+  }
+}
+
+.homeNav {
+  max-width: min-content;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s;
+  position: absolute;
+  right: 2rem;
+}
+
+.searchInput {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333333;
+  padding-left: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  width: 500px;
+}
+
+.searchInput[type="text"]:focus {
+  border: none;
+  outline: none;
+  color: #3f6eff;
+}
+
+.searchSubmit {
+  width: min-content;
+  padding: 0.5rem 2rem;
+  background-color: #3f6eff;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.searchSubmit:hover {
+  background-color: #02248b;
+  color: white;
+}
+
+/* Auto Options Div */
+.optionsDiv {
+  height: auto;
+  z-index: 99;
+  width: 500px;
+  position: absolute;
+  margin-top: 2.25rem;
+}
+
+.optionItem {
+  display: flex;
+  column-gap: 0.75rem;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: solid 0.75px rgb(239, 219, 194);
+  transition: 0.25s;
+}
+.optionItem:hover {
+  background-color: #3f6eff;
+  color: white;
+}
+
+.optionItem h3 {
+  width: 50%;
+}
+.optionItem p {
+  font-size: 0.9rem;
+}
+
+.searchBarLogoDiv {
+  display: flex;
+  column-gap: 1rem;
+  justify-content: space-around;
+  align-items: center;
+  max-width: fit-content;
+}
+
+.searchBarLogoDiv h2 {
+  color: white;
+  padding: 0;
+}
+
+.searchBarLogoDiv img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.searchBarPriceDiv {
+  display: flex;
+  column-gap: 1rem;
+  justify-content: space-around;
+  align-items: center;
+  max-width: fit-content;
+}
+
+.searchBarData p {
+  color: white;
+  font-weight: 700;
+  text-align: left;
+}
+
+.homeNav:hover {
+  background-color: #241f2a;
+}
+
+.homeNavIcon {
+  color: white;
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: 0.25s;
+}
+
+.homeNav:hover .homeNavIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+}

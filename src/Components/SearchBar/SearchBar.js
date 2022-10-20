@@ -3,7 +3,7 @@ import { searchContext } from "../../Helper/Context";
 import { SearchBarData } from "./SearchBarData";
 import { SearchForm } from "./SearchForm";
 import { HomeIcon } from "./HomeIcon";
-import styles from "../../App.module.css";
+import styles from "./SearchBar.module.css";
 
 export const SearchBar = () => {
   const { summaryData } = useContext(searchContext);

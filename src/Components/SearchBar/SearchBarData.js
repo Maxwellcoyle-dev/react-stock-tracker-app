@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { searchContext } from "../../Helper/Context";
-import styles from "../../App.module.css";
+import styles from "./SearchBar.module.css";
 
 export const SearchBarData = () => {
   const { summaryData, searchParamLogo } = useContext(searchContext);

@@ -16,7 +16,7 @@ export const Tracker = () => {
     interval: "1mo",
     range: "5y",
   });
-
+  const [autoOptions, setAutoOptions] = useState(null);
   const [chartData, setChartData] = useState(null);
   const [summaryData, setSummaryData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,8 +26,9 @@ export const Tracker = () => {
 
   useEffect(() => {
     if (searchParam !== "") {
-      console.log("fetch summar data");
+      console.log("fetch summary data");
       setIsLoading(true);
+      console.log(searchParam);
 
       const options = {
         method: "GET",
@@ -42,6 +43,7 @@ export const Tracker = () => {
       Axios.request(options)
         .then(function (response) {
           setSummaryData(response.data);
+          console.log(response.data);
         })
         .catch(function (error) {
           console.error(error);
@@ -128,6 +130,8 @@ export const Tracker = () => {
         page,
         setPage,
         searchParamLogo,
+        autoOptions,
+        setAutoOptions,
       }}
     >
       <SearchBar />

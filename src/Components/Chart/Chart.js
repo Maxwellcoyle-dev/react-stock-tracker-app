@@ -59,7 +59,7 @@ function CustomTooltip({ active, payload, label }) {
     return (
       <div className={styles.tooltip}>
         <h4> {label} </h4>
-        <p> ${payload[0]?.value.toFixed(2)} </p>
+        <p> ${payload[0]?.value?.toFixed(2)} </p>
       </div>
     );
   }

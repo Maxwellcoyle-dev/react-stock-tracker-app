@@ -1,6 +1,6 @@
 import React from "react";
 import { FiHome } from "react-icons/fi";
-import styles from "../../App.module.css";
+import styles from "./SearchBar.module.css";
 
 export const HomeIcon = () => {
   return (

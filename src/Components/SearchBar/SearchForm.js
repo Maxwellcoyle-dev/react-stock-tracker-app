@@ -30,6 +30,7 @@ export const SearchForm = () => {
       Axios.request(options)
         .then(function (response) {
           setAutoOptions(response.data);
+          console.log(response.data);
         })
         .catch(function (error) {
           console.error(error);

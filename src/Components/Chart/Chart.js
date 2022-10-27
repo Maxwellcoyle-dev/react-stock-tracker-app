@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { searchContext } from "../../Helper/Context";
+import { searchContext } from "../../Helper/searchContext";
 import {
   ResponsiveContainer,
   Area,
@@ -10,14 +10,15 @@ import {
   AreaChart,
 } from "recharts";
 import styles from "../../App.module.css";
+import { useGetPriceData } from "../../Hooks/useGetPriceData";
 
 export const Chart = (props) => {
-  const { chartData } = useContext(searchContext);
+  const { priceData, priceDataLoading } = useGetPriceData();
 
   return (
     <ResponsiveContainer className={styles.chart} aspect={16 / 7}>
       <AreaChart
-        data={chartData}
+        data={priceData}
         margin={{
           top: 30,
           right: 10,

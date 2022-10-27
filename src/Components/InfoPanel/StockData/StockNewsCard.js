@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
-import { searchContext } from "../../Helper/Context";
-import styles from "./PanelStyles.module.css";
+import React from "react";
+import { useGetAutoComplete } from "../../../Hooks/useGetAutoComplete";
+import styles from "../PanelStyles.module.css";
 
 export const StockNewsCard = () => {
-  const { autoOptions, setAutoOptions } = useContext(searchContext);
+  const { autoCompleteData } = useGetAutoComplete();
+
   return (
     <div className={styles.stockNewsCard}>
-      {autoOptions?.news.map((story) => {
+      {autoCompleteData?.news.map((story) => {
         if (story.thumbnail?.resolutions[0].width > 140) {
           return (
             <div

@@ -1,11 +1,13 @@
-import React, { useContext, useState, useEffect } from "react";
-import { searchContext } from "../../Helper/Context";
+import React, { useState, useEffect } from "react";
+import { useGetLogo } from "../../../Hooks/useGetLogo";
+import { useGetSumData } from "../../../Hooks/useGetSumData";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import styles from "./PanelStyles.module.css";
+import styles from "../PanelStyles.module.css";
 
 export const StockDataHeader = (props) => {
-  const { summaryData, searchParamLogo } = useContext(searchContext);
   const [isStarred, setIsStarred] = useState(false);
+  const { logo } = useGetLogo();
+  const { sumData } = useGetSumData();
 
   // Add a new favorite to the favorite list
   const addFav = (event) => {
@@ -13,16 +15,16 @@ export const StockDataHeader = (props) => {
     setIsStarred(true);
     // New Favorite item to be added
     const newFav = {
-      symbol: summaryData?.symbol,
-      price: summaryData?.price.regularMarketPrice.fmt,
-      color: summaryData?.price.regularMarketChange.raw > 0 ? "green" : "red",
-      regMarketChange: summaryData?.price.regularMarketChange.fmt,
-      regMarketChangePercent: summaryData?.price.regularMarketChangePercent.fmt,
+      symbol: sumData?.symbol,
+      price: sumData?.price.regularMarketPrice.fmt,
+      color: sumData?.price.regularMarketChange.raw > 0 ? "green" : "red",
+      regMarketChange: sumData?.price.regularMarketChange.fmt,
+      regMarketChangePercent: sumData?.price.regularMarketChangePercent.fmt,
       id: Math.random() * 1000,
     };
     // Check if the stock already exists in the favorites list
     const checkDuplicate = props.favorites.some(
-      (fav) => fav.symbol === summaryData?.symbol
+      (fav) => fav.symbol === sumData?.symbol
     );
     // If the stock does not already exist in the favorites list or if the favorites list is empty, then add the stock to the favorites list
     if (!checkDuplicate) {
@@ -34,13 +36,13 @@ export const StockDataHeader = (props) => {
 
   const removeFav = () => {
     props.setFavorites(
-      props.favorites.filter((fav) => fav.symbol !== summaryData?.symbol)
+      props.favorites.filter((fav) => fav.symbol !== sumData?.symbol)
     );
   };
 
   useEffect(() => {
     const checkIfFav = props.favorites.some(
-      (fav) => fav.symbol === summaryData?.symbol
+      (fav) => fav.symbol === sumData?.symbol
     );
     setIsStarred(checkIfFav);
   }, [props.favorites]);
@@ -48,16 +50,16 @@ export const StockDataHeader = (props) => {
   return (
     <div className={styles.panelDataHeader}>
       <a
-        href={summaryData?.summaryProfile.website}
+        href={sumData?.summaryProfile.website}
         target="_blank"
         rel="noreferrer"
       >
         <img
-          src={searchParamLogo}
+          src={logo}
           alt="Company logo, provided by CUF Services 'https://companyurlfinder.com'"
         />
       </a>
-      <h3>{summaryData?.quoteType.shortName}</h3>
+      <h3>{sumData?.quoteType.shortName}</h3>
       {isStarred ? (
         <AiFillStar className={styles.starred} onClick={removeFav} />
       ) : (

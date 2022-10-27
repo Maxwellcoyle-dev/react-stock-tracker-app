@@ -9,7 +9,7 @@ const fetchSumData = async (ticker) => {
     url: "https://yh-finance.p.rapidapi.com/stock/v2/get-summary",
     params: { symbol: ticker },
     headers: {
-      "X-RapidAPI-Key": `0327aa61b5msh24f690832314c8ep152dcajsn4076cff7ccf6`,
+      "X-RapidAPI-Key": process.env.REACT_APP_API_SECRET,
       "X-RapidAPI-Host": "yh-finance.p.rapidapi.com",
     },
   };

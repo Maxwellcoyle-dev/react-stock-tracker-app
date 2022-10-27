@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { searchContext } from "../../Helper/Context";
+import { searchContext } from "../../Helper/searchContext";
 import { RSelector } from "./RSelector.js";
 import styles from "./ChartStyles.module.css";
 

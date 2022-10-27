@@ -1,19 +1,19 @@
-import React, { useContext, useState } from "react";
-import { searchContext } from "../../Helper/Context";
+import React, { useState } from "react";
 import { StockDataCard } from "./StockDataCard";
 import { StockNewsCard } from "./StockNewsCard";
 import { StockDataHeader } from "./StockDataHeader";
 import { SpinnerCircular } from "spinners-react";
 import { CardToggle } from "./CardToggle";
-import styles from "./PanelStyles.module.css";
+import styles from "../PanelStyles.module.css";
+import { useGetLogo } from "../../../Hooks/useGetLogo";
 
-export const CurrentStockData = (props) => {
-  const { summaryData, isLoading, searchParamLogo } = useContext(searchContext);
+export const StockData = (props) => {
+  const { logoIsLoading } = useGetLogo();
   const [selected, setSelected] = useState("data");
 
   return (
     <div className={styles.panelDataDiv}>
-      {isLoading ? (
+      {logoIsLoading ? (
         <div className={styles.spinner}>
           <SpinnerCircular
             size={50}

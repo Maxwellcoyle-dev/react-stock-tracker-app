@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
-import { searchContext } from "../../Helper/Context";
+import React from "react";
 import styles from "./ChartStyles.module.css";
+import { useGetSumData } from "../../Hooks/useGetSumData";
 
 export const ChartName = () => {
-  const { summaryData } = useContext(searchContext);
+  const { sumData } = useGetSumData();
 
-  return (
-    <h2 className={styles.stockName}> {summaryData?.quoteType.shortName} </h2>
-  );
+  {
+    return (
+      sumData && (
+        <h2 className={styles.stockName}> {sumData?.quoteType.shortName} </h2>
+      )
+    );
+  }
 };

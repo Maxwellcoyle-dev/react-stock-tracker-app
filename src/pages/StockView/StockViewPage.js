@@ -10,7 +10,6 @@ export const StockViewPage = () => {
   const { searchTicker } = useContext(searchContext);
   const navigate = useNavigate();
 
-  // Navigate to the landing page if the searchTicker is empty when the page mounts
   useEffect(() => {
     if (searchTicker === "" || searchTicker === null) {
       navigate("/");

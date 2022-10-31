@@ -64,7 +64,6 @@ export const useGetPriceData = () => {
       ),
     {
       enabled: searchTicker !== "",
-      staleTime: 10000,
     }
   );
 

@@ -7,7 +7,14 @@ import { StockViewPage } from "./pages/StockView/StockViewPage";
 import { SearchBar } from "./Components/SearchBar/SearchBar";
 
 function App() {
-  const [searchTicker, setSearchTicker] = useState("");
+  const [searchTicker, setSearchTicker] = useState(() => {
+    const savedFavorites = JSON.parse(localStorage.getItem("watch-list"));
+    if (savedFavorites) {
+      return savedFavorites[0]?.symbol;
+    } else {
+      return "";
+    }
+  });
   const [input, setInput] = useState("tech");
   const [stockChartParams, setStockChartParams] = useState({
     interval: "1mo",

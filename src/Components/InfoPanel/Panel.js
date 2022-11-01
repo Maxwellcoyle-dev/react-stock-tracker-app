@@ -5,20 +5,14 @@ import { Favorites } from "./Favorites/Favorites";
 
 export const Panel = () => {
   const [favorites, setFavorites] = useState(() => {
-    return JSON.parse(localStorage.getItem("watch-list")) || [];
+    const savedFavorites = window.localStorage.getItem("STOCK_WATCH_LIST");
+    if (savedFavorites) {
+      return JSON.parse(savedFavorites);
+    } else return [];
   });
 
   useEffect(() => {
-    const savedFavorites = localStorage.getItem("watch-list");
-    if (savedFavorites) {
-      setFavorites(JSON.parse(savedFavorites));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (favorites !== []) {
-      localStorage.setItem("watch-list", JSON.stringify(favorites));
-    }
+    window.localStorage.setItem("STOCK_WATCH_LIST", JSON.stringify(favorites));
   }, [favorites]);
 
   return (

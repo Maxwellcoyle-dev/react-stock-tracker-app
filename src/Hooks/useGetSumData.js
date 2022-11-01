@@ -26,6 +26,7 @@ export const useGetSumData = () => {
     refetch: refetchSum,
   } = useQuery(["sumData", searchTicker], () => fetchSumData(searchTicker), {
     enabled: searchTicker !== "",
+    refetchOnMount: false,
   });
 
   return { sumData, isLoading, refetchSum };

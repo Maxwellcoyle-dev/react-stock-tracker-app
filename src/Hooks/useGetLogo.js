@@ -18,6 +18,7 @@ export const useGetLogo = () => {
     },
     {
       enabled: !!sumData,
+      refetchOnMount: false,
     }
   );
 

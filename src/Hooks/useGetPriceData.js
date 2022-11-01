@@ -64,6 +64,7 @@ export const useGetPriceData = () => {
       ),
     {
       enabled: searchTicker !== "",
+      refetchOnMount: false,
     }
   );
 

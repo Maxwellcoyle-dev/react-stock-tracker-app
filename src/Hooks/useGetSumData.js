@@ -14,7 +14,10 @@ const fetchSumData = async (ticker) => {
     },
   };
 
-  return await axios.request(options).then((response) => response.data);
+  return await axios.request(options).then((response) => {
+    console.log(response.data);
+    return response.data;
+  });
 };
 
 export const useGetSumData = () => {
@@ -22,11 +25,12 @@ export const useGetSumData = () => {
 
   const {
     data: sumData,
-    isLoading,
+    status: sumStatus,
     refetch: refetchSum,
   } = useQuery(["sumData", searchTicker], () => fetchSumData(searchTicker), {
     enabled: searchTicker !== "",
+    refetchOnMount: false,
   });
 
-  return { sumData, isLoading, refetchSum };
+  return { sumData, sumStatus, refetchSum };
 };

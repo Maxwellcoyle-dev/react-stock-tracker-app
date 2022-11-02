@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../PanelStyles.module.css";
+import styles from "./PanelStyles.module.css";
 
 export const CardToggle = (props) => {
   return (

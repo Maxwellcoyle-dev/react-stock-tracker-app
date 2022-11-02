@@ -4,6 +4,7 @@ import { ChartHeader } from "./ChartHeader";
 import styles from "./ChartStyles.module.css";
 import { SpinnerCircular } from "spinners-react";
 import { useGetPriceData } from "../../Hooks/useGetPriceData";
+import { ChartFooter } from "./ChartFooter";
 
 export const StockChart = () => {
   const [metric, setMetric] = useState("high");

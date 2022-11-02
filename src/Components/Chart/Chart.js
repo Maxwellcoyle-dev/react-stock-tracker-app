@@ -16,13 +16,13 @@ export const Chart = (props) => {
   const { priceData, priceDataLoading } = useGetPriceData();
 
   return (
-    <ResponsiveContainer className={styles.chart} aspect={16 / 7}>
+    <ResponsiveContainer className={styles.chart} aspect={16 / 7} height="auto">
       <AreaChart
         data={priceData}
         margin={{
           top: 30,
           right: 10,
-          bottom: 10,
+          bottom: 0,
           left: 40,
         }}
       >

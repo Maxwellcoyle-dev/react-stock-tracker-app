@@ -1,7 +1,6 @@
 import React from "react";
-import { useGetSumData } from "../../../Hooks/useGetSumData";
-
-import styles from "../PanelStyles.module.css";
+import { useGetSumData } from "../../../../Hooks/useGetSumData";
+import styles from "../../PanelStyles.module.css";
 
 export const StockDataCard = () => {
   const { sumData } = useGetSumData();
@@ -14,7 +13,14 @@ export const StockDataCard = () => {
   return (
     <div className={styles.panelBody}>
       <div className={styles.panelSubHeader}>
-        <p>{sumData?.symbol}</p>
+        <a
+          href={sumData?.summaryProfile.website}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <p>{sumData?.quoteType.shortName}</p>
+        </a>
+
         <p>-</p>
         <p>{sumData?.quoteType.exchange}</p>
       </div>
@@ -41,6 +47,8 @@ export const StockDataCard = () => {
         <p>{sumData?.summaryDetail.marketCap?.fmt}</p>
         <p className={styles.statLabel}>DIVIDEND YIELD (FY)</p>
         <p>{sumData?.summaryDetail.dividendYield?.fmt}</p>
+        <p className={styles.statLabel}>Shares Float</p>
+        <p>{sumData?.defaultKeyStatistics.floatShares?.fmt}</p>
         <p className={styles.statLabel}>SOCIAL SCORE</p>
         <p>{sumData?.esgScores.socialScore?.fmt}</p>
       </div>

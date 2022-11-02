@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { searchContext } from "../../../Helper/searchContext";
-import styles from "../PanelStyles.module.css";
+import { searchContext } from "../../../../Helper/searchContext";
+import styles from "../../PanelStyles.module.css";
 import { CgRemove } from "react-icons/cg";
 
 export const FavItem = (props) => {

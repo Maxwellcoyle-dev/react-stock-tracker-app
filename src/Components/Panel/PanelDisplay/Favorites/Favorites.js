@@ -1,13 +1,13 @@
 import React from "react";
 import { FavItem } from "./FavItem";
-import styles from "../PanelStyles.module.css";
+import styles from "../../PanelStyles.module.css";
 
 export const Favorites = (props) => {
   return (
     <div className={styles.favorites}>
       <h3>Watch List</h3>
       <div className={styles.favoriteListLabel}>
-        {props.favorites.length > 0 ? (
+        {props.favorites?.length > 0 ? (
           <>
             <h4>Sym</h4>
             <p>Price</p>

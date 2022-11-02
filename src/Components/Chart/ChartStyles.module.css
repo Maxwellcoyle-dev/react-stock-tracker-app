@@ -23,10 +23,6 @@
   text-align: left;
 }
 
-.chart {
-  max-height: 75%;
-}
-
 .rangeSelector {
   width: fit-content;
   height: 30px;
@@ -94,4 +90,13 @@
 .spinner {
   padding: 10rem;
   margin: auto;
+}
+
+.chartFooter {
+  color: white;
+}
+
+.chartFooter p {
+  color: white;
+  font-size: 3rem;
 }

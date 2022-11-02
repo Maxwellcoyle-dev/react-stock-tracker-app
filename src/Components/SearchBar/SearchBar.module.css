@@ -73,20 +73,20 @@
 }
 
 .searchSubmit {
+  color: white;
   width: min-content;
   padding: 0.5rem 2rem;
-  background-color: #3f6eff;
+  background-color: #3f6fff8c;
   border: none;
   border-radius: 0.5rem;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: 0.5s;
+  transition: 0.2s;
   cursor: pointer;
 }
 
 .searchSubmit:hover {
-  background-color: #02248b;
-  color: white;
+  background-color: #3f6eff;
 }
 
 /* Auto Options Div */

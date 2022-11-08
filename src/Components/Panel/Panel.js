@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./PanelStyles.module.css";
-import { StockData } from "./StockData/StockData";
-import { Favorites } from "./Favorites/Favorites";
+import { PanelNav } from "./PanelNav/PanelNav";
+import { PanelDisplay } from "./PanelDisplay/PanelDisplay";
 
 export const Panel = () => {
   const [favorites, setFavorites] = useState(() => {
@@ -11,14 +11,27 @@ export const Panel = () => {
     } else return [];
   });
 
+  const [panelTab, setPanelTab] = useState("");
+
   useEffect(() => {
     window.localStorage.setItem("STOCK_WATCH_LIST", JSON.stringify(favorites));
   }, [favorites]);
 
+  useEffect(() => {
+    if (panelTab === "") {
+      setPanelTab("stock-data");
+    }
+  }, []);
+
   return (
     <div className={styles.panel}>
-      <Favorites favorites={favorites} setFavorites={setFavorites} />
-      <StockData favorites={favorites} setFavorites={setFavorites} />
+      <PanelDisplay
+        favorites={favorites}
+        setFavorites={setFavorites}
+        setPanelTab={setPanelTab}
+        panelTab={panelTab}
+      />
+      <PanelNav setPanelTab={setPanelTab} panelTab={panelTab} />
     </div>
   );
 };

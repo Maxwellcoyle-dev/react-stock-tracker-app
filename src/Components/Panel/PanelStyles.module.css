@@ -1,32 +1,45 @@
-/* Spinner */
-
-.spinner {
-  display: flex;
-  align-items: "center";
-  justify-content: "center";
-  height: "100%";
-  margin: 50%;
-  text-align: center;
-}
-
-/* Panel Styles Main containers */
-
+/* Panel Styles Top Level containers */
 .panel {
   height: calc(100vh - 4rem);
   color: white;
   border-radius: 0.2rem;
   display: flex;
-  flex-direction: column;
-  row-gap: 0.25rem;
+  column-gap: 0.25rem;
   margin-right: 0.25rem;
 }
 
-.panelDataDiv {
+.panelDisplay {
+  height: 100%;
+  background-color: #231f2a;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+}
+
+.panelNav {
+  width: 3.5rem;
+  height: 100%;
+  background-color: #333333;
+}
+
+/* PanelDisplay Top Containers*/
+.panelHeader {
+  background-color: #333333;
+  min-height: 3.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 0.5rem;
+  text-align: left;
+  padding: 0 1rem;
+}
+
+.stockData {
   padding: 2rem 1rem 3rem 1rem;
   background-color: #333333;
   overflow-y: auto;
-  overflow-x: hidden;
-  height: auto;
+  height: 100%;
   resize: vertical;
 }
 
@@ -35,62 +48,86 @@
   background-color: #333333;
   padding: 1rem;
   text-align: left;
-  min-height: 20%;
-  max-height: 40%;
-  overflow-x: hidden;
+  height: 100%;
   overflow-y: auto;
   resize: vertical;
 }
 
-/* Card Toggle */
-.cardToggleDiv {
+.stockNews {
+  height: auto;
+}
+
+/* PanelNav */
+.panelNav {
   display: flex;
-  padding: 1.5rem;
+  flex-direction: column;
 }
-.cardToggleDiv button {
-  padding: 0.5rem;
-  margin: 0 0.5rem;
-  border-radius: 0.5rem;
-  background-color: #3f6eff;
-  border: none;
-  font-weight: 600;
-  transition: 0.25s;
+
+.panelNav a {
+  width: 3.5rem;
+  height: 3.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  border-radius: 0.5rem;
 }
 
-.cardToggleDiv button:hover {
-  background-color: #02248b;
-  color: white;
+.panelNav a:hover {
+  background-color: #3f6eff;
 }
 
-.cardToggleDiv .selected {
-  background-color: #02248b;
-  color: white;
+.panelNav a .tooltipText {
+  visibility: hidden;
+  width: auto;
+  background-color: rgba(254, 254, 254);
+  color: rgb(28, 26, 26);
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  top: 0rem;
+  right: 105%;
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.panelNav a:hover .tooltipText {
+  visibility: visible;
+}
+
+.panelNav .tabIcon {
+  width: 2rem;
+  height: 2rem;
+  margin: auto;
+  text-align: center;
 }
 
 /* PanelHeader */
-.panelDataHeader {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  column-gap: 0.5rem;
-  text-align: left;
-}
 
-.panelDataHeader h2 {
-  text-align: left;
-  font-size: 1rem;
+.marketTimeDiv {
   width: fit-content;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
 }
 
-.panelDataHeader a {
-  width: min-content;
+.marketTimeDiv p {
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
-.panelDataHeader img {
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 50%;
+.marketTimeDiv .green {
+  font-size: 0.7rem;
+  color: greenyellow;
+}
+
+.marketTimeDiv .red {
+  font-size: 0.7rem;
+  color: orangered;
 }
 
 .star {
@@ -117,20 +154,43 @@
   height: 2.3rem;
 }
 
-/* Panel Body */
-
-.panelDataDiv::-webkit-scrollbar {
+/* StockData */
+.stockData::-webkit-scrollbar {
   width: 0.75rem;
   background-color: #aeaeae;
   border-radius: 0.5rem;
 }
 
-.panelDataDiv::-webkit-scrollbar-thumb {
+.stockData::-webkit-scrollbar-thumb {
   background-color: #424242;
   border-radius: 0.5rem;
 }
 
-.panelSubHeader {
+.stockDataHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  text-align: left;
+}
+
+.stockDataHeader h2 {
+  text-align: left;
+  font-size: 1rem;
+  width: fit-content;
+}
+
+.stockDataHeader a {
+  width: min-content;
+}
+
+.stockDataHeader img {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+}
+
+.stockDataSubHeader {
   display: flex;
   width: auto;
   column-gap: 0.5rem;
@@ -139,7 +199,7 @@
   align-items: center;
 }
 
-.panelSubHeader p {
+.stockDataSubHeader p {
   font-size: 0.8rem;
   width: min-content;
   color: #bebebe;
@@ -249,15 +309,11 @@
   color: red;
 }
 
-/* News Card Styles */
+/* StockNews */
 
-.stockNewsCard {
-}
-
-.storyDiv {
+.newsStory {
   aspect-ratio: 3/2;
   background-repeat: no-repeat;
-  margin: 1rem 0;
   background-size: cover;
   border-radius: 1rem;
 }
@@ -292,4 +348,23 @@ a {
   padding-top: 0.5rem;
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+/* Spinner */
+.spinner {
+  display: flex;
+  align-items: "center";
+  justify-content: "center";
+  height: "100%";
+  margin: 50%;
+  text-align: center;
+}
+
+/* Universal */
+.green {
+  color: greenyellow;
+}
+
+.red {
+  color: orangered;
 }

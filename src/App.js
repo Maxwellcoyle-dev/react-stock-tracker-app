@@ -1,6 +1,6 @@
 import styles from "./App.module.css";
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { searchContext } from "./Helper/searchContext";
 import { LandingPage } from "./pages/Landing/LandingPage";
 import { StockViewPage } from "./pages/StockView/StockViewPage";
@@ -19,12 +19,22 @@ function App() {
     range: "5y",
   });
 
+  const [currentTime, setCurrentTime] = useState();
+
   // Set the current search parameter to local storage to
   // make sure that refreshing the page does not delete state.
 
   useEffect(() => {
     localStorage.setItem("CURRENT_SEARCH_PARAM", JSON.stringify(searchTicker));
   }, [searchTicker]);
+
+  // Set the current date + time
+  useEffect(() => {
+    setInterval(() => {
+      const date = new Date();
+      setCurrentTime(date.toLocaleTimeString());
+    }, 1000);
+  }, []);
 
   return (
     <div className={styles.App}>
@@ -36,6 +46,7 @@ function App() {
           setStockChartParams,
           input,
           setInput,
+          currentTime,
         }}
       >
         <SearchBar />

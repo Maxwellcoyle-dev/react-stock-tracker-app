@@ -1,12 +1,12 @@
 import React from "react";
-import { useGetAutoComplete } from "../../../Hooks/useGetAutoComplete";
-import styles from "../PanelStyles.module.css";
+import { useGetAutoComplete } from "../../../../Hooks/useGetAutoComplete";
+import styles from "../../PanelStyles.module.css";
 
-export const StockNewsCard = () => {
+export const StockNews = () => {
   const { autoCompleteData } = useGetAutoComplete();
 
   return (
-    <div className={styles.stockNewsCard}>
+    <div className={styles.stockNews}>
       {autoCompleteData?.news.map((story) => {
         if (story.thumbnail?.resolutions[0].width > 140) {
           return (
@@ -15,7 +15,7 @@ export const StockNewsCard = () => {
               style={{
                 backgroundImage: `url(${story.thumbnail?.resolutions[0].url})`,
               }}
-              className={styles.storyDiv}
+              className={styles.newsStory}
             >
               <a href={story?.link} target="_blank">
                 <div className={styles.storyDivOverlay}>

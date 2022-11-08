@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { StockChart } from "../../Components/Chart/StockChart";
-import { Panel } from "../../Components/InfoPanel/Panel";
+import { Panel } from "../../Components/Panel/Panel";
 import styles from "../../App.module.css";
 import Split from "react-split";
 import { searchContext } from "../../Helper/searchContext";

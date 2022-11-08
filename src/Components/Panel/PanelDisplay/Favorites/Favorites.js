@@ -1,6 +1,6 @@
 import React from "react";
 import { FavItem } from "./FavItem";
-import styles from "../PanelStyles.module.css";
+import styles from "../../PanelStyles.module.css";
 
 export const Favorites = (props) => {
   return (

@@ -45,6 +45,7 @@ export const AutoComplete = (props) => {
               className={styles.optionItem}
               onClick={() => {
                 setSearchTicker(quote?.symbol);
+                setInput(quote?.symbol);
                 props.setDisplay(false);
                 navigate("/stockview");
               }}

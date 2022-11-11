@@ -11,16 +11,6 @@ export const StockDataCard = () => {
   return (
     <>
       <div className={styles.stockDataHeader}>
-        <a
-          href={sumData?.summaryProfile.website}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src={logo}
-            alt="Company logo, provided by CUF Services 'https://companyurlfinder.com'"
-          />
-        </a>
         <h3>{sumData?.quoteType.shortName}</h3>
       </div>
 

@@ -1,24 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGetLogo } from "../../Hooks/useGetLogo";
 import { useGetSumData } from "../../Hooks/useGetSumData";
 import styles from "./SearchBar.module.css";
 
 export const SearchBarData = () => {
-  const { sumData } = useGetSumData();
-  const { logo } = useGetLogo();
-  if (sumData) {
+  const { sumData, sumStatus } = useGetSumData();
+  const { logo, logoStatus } = useGetLogo();
+
+  useEffect(() => {
+    console.log(logoStatus);
+    console.log(logo);
+  }, [logoStatus]);
+
+  if (sumStatus === "success") {
     return (
       <div className={styles.searchBarData}>
-        <a
-          href={sumData?.summaryProfile.website}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src={logo}
-            alt="company logo, provided by CUF Services 'https://companyurlfinder.com'"
-          />
-        </a>
         <h2 className={styles.symbol}>{sumData?.quoteType.symbol}</h2>
 
         <h2

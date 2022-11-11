@@ -60,6 +60,15 @@
   overflow-y: auto;
 }
 
+.spinner {
+  display: flex;
+  align-items: "center";
+  justify-content: "center";
+  background-color: #333333;
+  margin: 50%;
+  text-align: center;
+}
+
 /* PanelNav */
 .panelNav {
   display: flex;
@@ -175,6 +184,7 @@
   align-items: center;
   column-gap: 0.5rem;
   text-align: left;
+  padding-bottom: 1rem;
 }
 
 .stockDataHeader h2 {
@@ -195,7 +205,7 @@
 
 .stockDataSubHeader {
   display: flex;
-  width: auto;
+  width: 100%;
   column-gap: 0.5rem;
   text-align: left;
   padding-bottom: 0.5rem;
@@ -204,7 +214,7 @@
 
 .stockDataSubHeader p {
   font-size: 0.8rem;
-  width: min-content;
+  width: fit-content;
   color: #bebebe;
 }
 
@@ -283,7 +293,7 @@
 
 .labels {
   display: flex;
-  column-gap: 1.75rem;
+  column-gap: 2rem;
   padding-bottom: 0.25rem;
   width: max-content;
 }
@@ -298,13 +308,22 @@
 }
 
 .favoriteItemData {
-  display: flex;
-  column-gap: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   text-align: left;
   cursor: pointer;
   transition: 0.2s;
   align-items: center;
   padding: 0.2rem;
+  width: 100%;
+}
+
+.favoriteItemData .green {
+  color: greenyellow;
+}
+
+.favoriteItemData .red {
+  color: orangered;
 }
 
 .favoriteItem:hover {
@@ -347,7 +366,7 @@
 /* StockNews */
 
 .stockNews h3 {
-  padding: 0 1rem 2rem 1rem;
+  padding: 0 1rem 1rem 1rem;
   text-align: left;
 }
 
@@ -355,8 +374,12 @@
   display: flex;
   flex-direction: column;
   row-gap: 0.5rem;
-  padding: 0 1rem 3rem 1rem;
+  padding: 0 1rem 2rem 1rem;
   text-align: left;
+}
+
+.heroStory p {
+  padding-top: 1rem;
 }
 
 .heroStory .titleLink {
@@ -386,12 +409,14 @@
 .newsItem h4 {
   color: white;
   line-height: 1.5rem;
+  font-weight: 600;
 }
 
 .newsItem p {
   padding-top: 0.5rem;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 400;
+  color: whitesmoke;
 }
 
 a {
@@ -402,16 +427,6 @@ a {
   padding-top: 0.5rem;
   font-size: 0.9rem;
   font-weight: 600;
-}
-
-/* Spinner */
-.spinner {
-  display: flex;
-  align-items: "center";
-  justify-content: "center";
-  height: "100%";
-  margin: 50%;
-  text-align: center;
 }
 
 /* Universal */

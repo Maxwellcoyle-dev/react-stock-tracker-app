@@ -25,12 +25,12 @@ export const useGetAutoComplete = () => {
 
   const {
     data: autoCompleteData,
-    isLoading: autoCompleteLoading,
+    status: autoCompleteStatus,
     refetch: refetchAutoCompelte,
   } = useQuery(["autoComplete", input], () => fetchAutoComplete(input), {
     enabled: input !== "",
     staleTime: 10000,
   });
 
-  return { autoCompleteData, autoCompleteLoading, refetchAutoCompelte };
+  return { autoCompleteData, autoCompleteStatus, refetchAutoCompelte };
 };

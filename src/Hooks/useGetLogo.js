@@ -1,12 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
+import { useContext, useEffect } from "react";
+import { searchContext } from "../Helper/searchContext";
 import { useGetSumData } from "./useGetSumData";
 
 export const useGetLogo = () => {
   const { sumData } = useGetSumData();
 
+  useEffect(() => {
+    console.log(sumData?.summaryProfile.website.slice(12));
+  }, []);
+
   const {
     data: logo,
-    isLoading: logoIsLoading,
+    status: logoStatus,
     refetch,
     refetchLogo,
   } = useQuery(
@@ -21,5 +27,5 @@ export const useGetLogo = () => {
     }
   );
 
-  return { logo, logoIsLoading, refetchLogo };
+  return { logo, logoStatus, refetchLogo };
 };

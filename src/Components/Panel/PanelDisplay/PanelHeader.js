@@ -15,10 +15,10 @@ export const PanelHeader = (props) => {
     event.preventDefault();
     setIsStarred(true);
     // New Favorite item to be added
+
     const newFav = {
       symbol: sumData?.symbol,
       price: sumData?.price.regularMarketPrice.fmt,
-      color: sumData?.price.regularMarketChange.raw > 0 ? "green" : "red",
       regMarketChange: sumData?.price.regularMarketChange.fmt,
       regMarketChangePercent: sumData?.price.regularMarketChangePercent.fmt,
       id: Math.random() * 1000,

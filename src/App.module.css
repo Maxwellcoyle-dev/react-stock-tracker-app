@@ -13,6 +13,7 @@
   min-height: 100vh;
   max-width: 100vw;
   position: fixed;
+  cursor: default;
 }
 
 /* Landing Page  */

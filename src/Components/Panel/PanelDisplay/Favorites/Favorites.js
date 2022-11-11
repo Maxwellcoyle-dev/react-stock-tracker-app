@@ -6,20 +6,23 @@ export const Favorites = (props) => {
   return (
     <div className={styles.favorites}>
       <h3>Watch List</h3>
-      <div className={styles.favoriteListLabel}>
-        {props.favorites?.length > 0 ? (
-          <>
+      {props.favorites?.length > 0 ? (
+        <div className={styles.favoriteListLabel}>
+          <div className={styles.labels}>
             <h4>Sym</h4>
             <p>Price</p>
             <p>Chg</p>
             <p>Chg%</p>
-          </>
-        ) : (
+          </div>
           <>
-            <h4>Click the star to add a symbol to your Watch List.</h4>
+            <hr className={styles.hLine} />
           </>
-        )}
-      </div>
+        </div>
+      ) : (
+        <>
+          <h4>Click the star to add a symbol to your Watch List.</h4>
+        </>
+      )}
       {props.favorites?.map((item) => {
         return (
           <FavItem

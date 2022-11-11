@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: 100%;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
@@ -11,9 +10,10 @@
   text-align: center;
   background-color: #241f2a;
   min-height: 100vh;
-  max-width: 100vw;
+  width: 100vw;
   position: fixed;
   cursor: default;
+  overflow-x: hidden;
 }
 
 /* Landing Page  */
@@ -35,22 +35,14 @@
 }
 
 /* StockView Page Styles */
-.split {
-  width: 100vw;
-  height: calc(100vh - 4rem);
+.stockViewPage {
   display: flex;
-  margin: 0.25rem;
-}
-
-/* Stock Chart Styles */
-
-/* .stockChart {
-  display: grid;
-  grid-template-columns: 1.5fr 0.5fr;
   column-gap: 0.25rem;
-  margin: 0.25rem;
-  overflow: hidden;
-} */
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  column-gap: 0.25rem;
+}
 
 /* CHART STYLES */
 

@@ -1,82 +1,46 @@
-/* Spinner */
-
-.spinner {
-  display: flex;
-  align-items: "center";
-  justify-content: "center";
-  height: "100%";
-  margin: 50%;
-  text-align: center;
-}
-
-/* Panel Styles Main containers */
-
+/* Panel Styles Top Level containers */
 .panel {
   height: calc(100vh - 4rem);
   color: white;
   border-radius: 0.2rem;
   display: flex;
-  row-gap: 0.25rem;
-  border-radius: 0.25rem;
-  min-width: 350px;
+  column-gap: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .panelDisplay {
   height: 100%;
+  background-color: #231f2a;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
 }
 
 .panelNav {
+  width: 3.5rem;
   height: 100%;
-  width: 3.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #333333;
-  border-radius: 0.25rem;
-  margin: 0 0.15rem;
 }
 
-/* PANEL NAV */
-
-.panelNav a {
-  width: 3.5rem;
-  height: 3.5rem;
+/* PanelDisplay Top Containers*/
+.panelHeader {
+  background-color: #333333;
+  min-height: 3.5rem;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  transition: 0.2s;
-}
-.panelNav a:hover {
-  background-color: #454444;
+  justify-content: space-between;
+  column-gap: 0.5rem;
+  text-align: left;
+  padding: 0 1rem;
 }
 
-.panelNav .selectedTab {
-  background-color: #3f6fff8c;
-}
-
-.panelNav .selectedTab:hover {
-  background-color: #3f6eff;
-}
-
-.panelNavIcon {
-  width: 2rem;
-  height: 2rem;
-  color: white;
-}
-
-.selectedTab .panelNavIcon {
-  color: #c4d2fd;
-}
-
-/* PANEL DISPLAY MAIN DIVS*/
 .stockData {
-  padding: 1rem;
+  padding: 2rem 1rem 3rem 1rem;
   background-color: #333333;
   overflow-y: auto;
-  overflow-x: hidden;
   height: 100%;
+  resize: vertical;
 }
 
 .favorites {
@@ -85,113 +49,148 @@
   padding: 1rem;
   text-align: left;
   height: 100%;
-  overflow-x: hidden;
   overflow-y: auto;
+  resize: vertical;
 }
 
 .stockNews {
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background-color: #333333;
-  padding: 2rem 1rem 3rem 1rem;
-  text-align: left;
+  height: auto;
+}
+
+/* PanelNav */
+.panelNav {
+  display: flex;
+  flex-direction: column;
+}
+
+.panelNav a {
+  width: 3.5rem;
+  height: 3.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.panelNav a:hover {
+  background-color: #3f6eff;
+}
+
+.panelNav a .tooltipText {
+  visibility: hidden;
+  width: auto;
+  background-color: rgba(254, 254, 254);
+  color: rgb(28, 26, 26);
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  top: 0rem;
+  right: 105%;
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.panelNav a:hover .tooltipText {
+  visibility: visible;
+}
+
+.panelNav .tabIcon {
+  width: 2rem;
+  height: 2rem;
+  margin: auto;
+  text-align: center;
 }
 
 /* PanelHeader */
-.panelDataHeader {
-  width: 100%;
+
+.marketTimeDiv {
+  width: fit-content;
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
-  align-items: center;
-  column-gap: 0.5rem;
-  text-align: left;
+  row-gap: 0.25rem;
 }
 
-.headerRow {
-  display: flex;
-  column-gap: 0.75rem;
-  align-items: center;
+.marketTimeDiv p {
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
-.headerRow .time {
-  text-align: right;
-  font-size: 0.8rem;
+.marketTimeDiv .green {
+  font-size: 0.7rem;
+  color: greenyellow;
 }
 
-.panelDataHeader h2 {
-  text-align: left;
-  font-size: 1rem;
-  width: fit-content;
-}
-
-.panelDataHeader a {
-  width: min-content;
-}
-
-.panelDataHeader img {
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 50%;
+.marketTimeDiv .red {
+  font-size: 0.7rem;
+  color: orangered;
 }
 
 .star {
   cursor: pointer;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
 }
 
 .star:hover {
   color: gold;
+  width: 2.3rem;
+  height: 2.3rem;
 }
 
 .starred {
   cursor: pointer;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 2.25rem;
+  height: 2.25rem;
   color: gold;
 }
 
-/* Panel Body */
-
-.panelBody {
-  padding-top: 1rem;
+.starred {
+  width: 2.3rem;
+  height: 2.3rem;
 }
 
-.panelDataDiv::-webkit-scrollbar {
+/* StockData */
+.stockData::-webkit-scrollbar {
   width: 0.75rem;
   background-color: #aeaeae;
   border-radius: 0.5rem;
 }
 
-.panelDataDiv::-webkit-scrollbar-thumb {
+.stockData::-webkit-scrollbar-thumb {
   background-color: #424242;
   border-radius: 0.5rem;
 }
 
-.panelSubHeader {
+.stockDataHeader {
+  width: 100%;
   display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  text-align: left;
+}
+
+.stockDataHeader h2 {
+  text-align: left;
+  font-size: 1rem;
   width: fit-content;
-  column-gap: 0.5rem;
-  text-align: left;
-  justify-content: space-around;
-  padding-bottom: 0.5rem;
-  align-items: center;
 }
 
-.panelSubHeader a {
-  text-decoration: none;
-  cursor: pointer;
+.stockDataHeader a {
+  width: min-content;
 }
 
-.panelSubHeader p {
-  width: auto;
-  font-size: 0.8rem;
-  color: #bebebe;
+.stockDataHeader img {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
 }
 
-/* .panelSubHeader {
+.stockDataSubHeader {
   display: flex;
   width: auto;
   column-gap: 0.5rem;
@@ -200,11 +199,11 @@
   align-items: center;
 }
 
-.panelSubHeader p {
+.stockDataSubHeader p {
   font-size: 0.8rem;
   width: min-content;
   color: #bebebe;
-} */
+}
 
 .summaryStats {
   display: flex;
@@ -310,49 +309,62 @@
   color: red;
 }
 
-/* News Card Styles */
+/* StockNews */
 
-.stockNews::-webkit-scrollbar {
-  background-color: #333333;
-  width: 0.75rem;
-}
-
-.stockNews::-webkit-scrollbar-thumb {
-  background-color: #3f6fff8c;
-  border-radius: 0.25rem;
-}
-.stockNews:hover::-webkit-scrollbar-thumb {
-  background-color: #3f6eff;
-}
-
-.stockNews h3 {
-  padding-bottom: 1.5rem;
-}
-
-.newsItem {
+.newsStory {
+  aspect-ratio: 3/2;
+  background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 0.5rem;
-  padding-bottom: 1rem;
+  border-radius: 1rem;
 }
 
-.newsItem:hover {
-  background-color: #494949;
-}
-
-.newsItem p {
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding-bottom: 0.75rem;
-}
-
-.titleLink {
+a {
   text-decoration: none;
+}
+
+.storyDivOverlay {
+  background-color: rgba(51, 51, 51, 0.75);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
   color: white;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
 }
 
-.storyDivider {
-  border: solid 0.5px white;
-  margin-bottom: 0.5rem;
+.storyDivOverlay:hover {
+  background-color: rgba(51, 51, 51, 0.25);
 }
 
-/* PANEL NAV STYLES */
+.storyDiv h3 {
+  line-height: 1.5rem;
+  margin: auto;
+}
+
+.storyDiv p {
+  padding-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Spinner */
+.spinner {
+  display: flex;
+  align-items: "center";
+  justify-content: "center";
+  height: "100%";
+  margin: 50%;
+  text-align: center;
+}
+
+/* Universal */
+.green {
+  color: greenyellow;
+}
+
+.red {
+  color: orangered;
+}

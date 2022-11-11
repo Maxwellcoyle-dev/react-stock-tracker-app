@@ -19,19 +19,9 @@ export const StockViewPage = () => {
   }, []);
 
   return (
-    <Split
-      sizes={[75, 25]}
-      minSize={100}
-      expandToMin={false}
-      gutterAlign="center"
-      snapOffset={30}
-      dragInterval={1}
-      direction="horizontal"
-      cursor="col-resize"
-      className={styles.split}
-    >
+    <div className={styles.stockViewPage}>
       <StockChart />
       <Panel />
-    </Split>
+    </div>
   );
 };

@@ -9,40 +9,36 @@ export const SearchBarData = () => {
   if (sumData) {
     return (
       <div className={styles.searchBarData}>
-        <div className={styles.searchBarLogoDiv}>
-          <a
-            href={sumData?.summaryProfile.website}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src={logo}
-              alt="company logo, provided by CUF Services 'https://companyurlfinder.com'"
-            />
-          </a>
-          <h2>{sumData?.quoteType.symbol}</h2>
-        </div>
+        <a
+          href={sumData?.summaryProfile.website}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src={logo}
+            alt="company logo, provided by CUF Services 'https://companyurlfinder.com'"
+          />
+        </a>
+        <h2 className={styles.symbol}>{sumData?.quoteType.symbol}</h2>
 
-        <div className={styles.searchBarPriceDiv}>
-          <h2
-            style={
-              sumData?.price.regularMarketChangePercent.raw >= 0
-                ? { color: "green" }
-                : { color: "red" }
-            }
-          >
-            ${sumData?.financialData.currentPrice.fmt}
-          </h2>
-          <p
-            style={
-              sumData?.price.regularMarketChangePercent.raw >= 0
-                ? { color: "green" }
-                : { color: "red" }
-            }
-          >
-            {sumData?.price.regularMarketChangePercent.fmt}
-          </p>
-        </div>
+        <h2
+          className={
+            sumData?.price.regularMarketChangePercent.raw >= 0
+              ? styles.green
+              : styles.red
+          }
+        >
+          ${sumData?.financialData.currentPrice.fmt}
+        </h2>
+        <p
+          className={
+            sumData?.price.regularMarketChangePercent.raw >= 0
+              ? styles.green
+              : styles.red
+          }
+        >
+          {sumData?.price.regularMarketChangePercent.fmt}
+        </p>
       </div>
     );
   }

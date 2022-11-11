@@ -24,10 +24,12 @@ export const FavItem = (props) => {
           {props.item.regMarketChangePercent}
         </p>
       </div>
-      <CgRemove
-        className={styles.removeIcon}
-        onClick={() => removeFav(props.id)}
-      />
+      <div className={styles.removeIconButton}>
+        <CgRemove
+          className={styles.removeIcon}
+          onClick={() => removeFav(props.id)}
+        />
+      </div>
     </div>
   );
 };

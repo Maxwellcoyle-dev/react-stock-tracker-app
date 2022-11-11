@@ -1,11 +1,12 @@
 /* Panel Styles Top Level containers */
 .panel {
-  height: calc(100vh - 4rem);
+  height: 100%;
   color: white;
   border-radius: 0.2rem;
   display: flex;
   column-gap: 0.25rem;
   margin-right: 0.25rem;
+  width: 30%;
 }
 
 .panelDisplay {
@@ -14,6 +15,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 0.25rem;
+  width: 100%;
 }
 
 .panelNav {
@@ -38,15 +40,13 @@
 .stockData {
   padding: 2rem 1rem 3rem 1rem;
   background-color: #333333;
-  overflow-y: auto;
   height: 100%;
-  resize: vertical;
 }
 
 .favorites {
   color: white;
   background-color: #333333;
-  padding: 2rem 1rem 3rem 1rem;
+  padding: 2rem 0 3rem 0;
   text-align: left;
   height: 100%;
   overflow-y: auto;
@@ -54,7 +54,7 @@
 }
 
 .stockNews {
-  height: auto;
+  height: 100%;
   background-color: #333333;
   padding: 2rem 0 3rem 0;
   overflow-y: auto;
@@ -259,6 +259,10 @@
   border-radius: 0.5rem;
 }
 
+.favorites h3 {
+  padding-left: 1rem;
+}
+
 .favorites p {
   font-size: 0.85rem;
 }
@@ -270,11 +274,18 @@
 
 .favoriteListLabel {
   display: flex;
+  flex-direction: column;
   color: #aeaeae;
-  padding-top: 0.5rem;
-  margin-bottom: 1rem;
+  padding: 1rem 1rem 1rem 1rem;
   text-align: left;
-  width: calc(100% - 1rem);
+  width: 100%;
+}
+
+.labels {
+  display: flex;
+  column-gap: 1.75rem;
+  padding-bottom: 0.25rem;
+  width: max-content;
 }
 
 .favoriteItem {
@@ -282,12 +293,13 @@
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  margin: 0.25rem 0;
+  padding: 0.25rem 1rem;
   line-height: auto;
 }
 
 .favoriteItemData {
   display: flex;
+  column-gap: 1.25rem;
   text-align: left;
   cursor: pointer;
   transition: 0.2s;
@@ -295,21 +307,41 @@
   padding: 0.2rem;
 }
 
-.favoriteItemData:hover {
+.favoriteItem:hover {
   background-color: #424242;
   border-radius: 0.25rem;
+}
+
+.favoriteItem:hover .removeIconButton {
+  background-color: #424242;
+}
+
+.removeIconButton {
+  width: fit-content;
+  padding: 0.5rem 0.1rem;
+  background-color: #333333;
+  border-radius: 0.5rem;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+}
+
+.favoriteItem .removeIconButton:hover {
+  background-color: #333333;
+  cursor: pointer;
+}
+
+.favoriteItem .removeIconButton:hover .removeIcon {
+  background-color: transparent;
+  color: red;
 }
 
 .removeIcon {
   border-radius: 0.1rem;
   cursor: pointer;
-  width: min-content;
+  width: 2rem;
   margin: 0.2rem;
-}
-
-.removeIcon:hover {
-  background-color: #333;
-  color: red;
+  margin: auto;
 }
 
 /* StockNews */
@@ -329,6 +361,10 @@
 
 .heroStory .titleLink {
   color: white;
+}
+
+.imageLink img {
+  width: 100%;
 }
 
 .newsItem {

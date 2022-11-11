@@ -14,7 +14,10 @@ const fetchAutoComplete = async (ticker) => {
     },
   };
 
-  return await axios.request(options).then((response) => response.data);
+  return await axios.request(options).then((response) => {
+    console.log(response.data);
+    return response.data;
+  });
 };
 
 export const useGetAutoComplete = () => {

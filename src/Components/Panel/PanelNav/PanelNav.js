@@ -1,40 +1,37 @@
-import React from "react";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { RiProfileLine } from "react-icons/ri";
-import { HiOutlineNewspaper } from "react-icons/hi";
+import React, { useState, useEffect } from "react";
 import styles from "../PanelStyles.module.css";
+import { CgProfile } from "react-icons/cg";
+import { BiListOl, BiNews } from "react-icons/bi";
 
 export const PanelNav = (props) => {
-  const handleToggle = (tab) => {
-    props.setPanelTab(tab);
-  };
-
   return (
     <div className={styles.panelNav}>
       <a
-        onClick={() => handleToggle("stock-data")}
         className={
-          props.panelTab === "stock-data" ? styles.selectedTab : undefined
+          props.panelTab === "stock-data" ? styles.selectedTab : styles.tab
         }
+        onClick={() => props.setPanelTab("stock-data")}
       >
-        <RiProfileLine className={styles.panelNavIcon} />
+        <CgProfile className={styles.tabIcon} />
+        <span className={styles.tooltipText}>Overview</span>
       </a>
       <a
-        onClick={() => handleToggle("watch-list")}
         className={
-          props.panelTab === "watch-list" ? styles.selectedTab : undefined
+          props.panelTab === "favorites" ? styles.selectedTab : styles.tab
         }
+        onClick={() => props.setPanelTab("favorites")}
       >
-        <AiOutlineStar className={styles.panelNavIcon} />
+        <BiListOl className={styles.tabIcon} />
+        <span className={styles.tooltipText}>Watch List</span>
       </a>
-
       <a
-        onClick={() => handleToggle("stock-news")}
         className={
-          props.panelTab === "stock-news" ? styles.selectedTab : undefined
+          props.panelTab === "stock-news" ? styles.selectedTab : styles.tab
         }
+        onClick={() => props.setPanelTab("stock-news")}
       >
-        <HiOutlineNewspaper className={styles.panelNavIcon} />
+        <BiNews className={styles.tabIcon} />
+        <span className={styles.tooltipText}>News</span>
       </a>
     </div>
   );

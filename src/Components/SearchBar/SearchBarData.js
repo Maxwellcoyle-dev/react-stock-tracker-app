@@ -7,11 +7,6 @@ export const SearchBarData = () => {
   const { sumData, sumStatus } = useGetSumData();
   const { logo, logoStatus } = useGetLogo();
 
-  useEffect(() => {
-    console.log(logoStatus);
-    console.log(logo);
-  }, [logoStatus]);
-
   if (sumStatus === "success") {
     return (
       <div className={styles.searchBarData}>

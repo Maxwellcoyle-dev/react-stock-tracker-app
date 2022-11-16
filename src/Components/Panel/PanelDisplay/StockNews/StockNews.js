@@ -13,12 +13,12 @@ export const StockNews = () => {
 
   useEffect(() => {
     if (autoCompleteData) {
-      const newsData = autoCompleteData.news;
+      const newsData = autoCompleteData?.news;
       let hero = [];
       let stories = [];
 
-      for (let i = 0; i < newsData.length; i++) {
-        if (hero.length < 1 && newsData[i].thumbnail.resolutions[1]) {
+      for (let i = 0; i < newsData?.length; i++) {
+        if (hero.length < 1 && newsData[i]?.thumbnail?.resolutions[1]) {
           hero.push(newsData[i]);
           setHeroStory(newsData[i]);
         } else {

@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FavItem } from "./FavItem";
 import styles from "../../PanelStyles.module.css";
+import { FavoritesContext } from "../../FavoritesContext";
 
-export const Favorites = (props) => {
-  return (
-    <div className={styles.favorites}>
-      <h3>Watch List</h3>
-      {props.favorites?.length > 0 ? (
+export const Favorites = () => {
+  const { favorites, dispatch } = useContext(FavoritesContext);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editTicker, setEditTicker] = useState("");
+  const [noteText, setNoteText] = useState("");
+
+  useEffect(() => {
+    favorites.map((fav) => {
+      if (fav.editNote) {
+        setEditTicker(fav.symbol);
+        setIsEditing(fav.editNote);
+        setNoteText(fav.note);
+      }
+    });
+  }, [favorites]);
+
+  if (!isEditing) {
+    return (
+      <div className={styles.favorites}>
+        <h3>Watch List</h3>
         <div className={styles.favoriteListLabel}>
           <div className={styles.labels}>
             <h4>Sym</h4>
@@ -18,22 +34,71 @@ export const Favorites = (props) => {
             <hr className={styles.hLine} />
           </>
         </div>
-      ) : (
-        <>
-          <h4>Click the star to add a symbol to your Watch List.</h4>
-        </>
-      )}
-      {props.favorites?.map((item) => {
-        return (
-          <FavItem
-            item={item}
-            favorites={props.favorites}
-            setFavorites={props.setFavorites}
-            key={item.id}
-            id={item.id}
-          />
-        );
-      })}
-    </div>
-  );
+        <div>
+          {favorites.map((fav) => {
+            return (
+              <FavItem
+                symbol={fav.symbol}
+                price={fav.price}
+                mktChange={fav.mktChange}
+                mktChangePercent={fav.mktChangePercent}
+                note={fav.note}
+                editNote={fav.editNote}
+                isEditing={isEditing}
+                setIsEditing={setIsEditing}
+              />
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  if (isEditing) {
+    return (
+      <div className={styles.addNote}>
+        <h3>{editTicker} Notes</h3>
+        <textarea
+          value={noteText}
+          placeholder="add note here"
+          onChange={(e) => {
+            dispatch({
+              type: "changed-note",
+              note: e.target.value,
+              symbol: editTicker,
+            });
+          }}
+        />
+        <div className={styles.buttonDiv}>
+          <button
+            className={styles.active}
+            onClick={() => {
+              setIsEditing(false);
+              dispatch({
+                type: "delete-note",
+                symbol: editTicker,
+              });
+            }}
+          >
+            Delete
+          </button>
+          <button
+            className={noteText === "" ? styles.disabled : styles.primary}
+            onClick={() => {
+              if (noteText !== "") {
+                setIsEditing(false);
+                dispatch({
+                  type: "editing-note",
+                  symbol: editTicker,
+                  editNote: noteText,
+                });
+              }
+            }}
+          >
+            Add
+          </button>
+        </div>
+      </div>
+    );
+  }
 };

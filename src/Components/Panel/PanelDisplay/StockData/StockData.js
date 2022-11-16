@@ -3,6 +3,7 @@ import { StockDataCard } from "./StockDataCard";
 import { SpinnerCircular } from "spinners-react";
 import styles from "../../PanelStyles.module.css";
 import { useGetLogo } from "../../../../Hooks/useGetLogo";
+import { Description } from "./Description";
 
 export const StockData = (props) => {
   const { logoIsLoading } = useGetLogo();
@@ -26,6 +27,7 @@ export const StockData = (props) => {
             favorites={props.favorites}
             setFavorites={props.setFavorites}
           />
+          <Description />
         </div>
       )}
     </div>

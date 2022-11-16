@@ -3,50 +3,22 @@ import { useGetSumData } from "../../../Hooks/useGetSumData";
 import { BiListPlus, BiListMinus } from "react-icons/bi";
 import styles from "../PanelStyles.module.css";
 import { searchContext } from "../../../Helper/searchContext";
+import { FavoritesContext } from "../FavoritesContext";
 
-export const PanelHeader = (props) => {
+export const PanelHeader = () => {
   const { currentTime } = useContext(searchContext);
   const [isStarred, setIsStarred] = useState(false);
   const [marketOpen, setMarketOpen] = useState(false);
   const { sumData } = useGetSumData();
+  const { dispatch, favorites } = useContext(FavoritesContext);
 
-  // Add a new favorite to the favorite list
-  const addFav = (event) => {
-    event.preventDefault();
-    setIsStarred(true);
-    // New Favorite item to be added
-
-    const newFav = {
-      symbol: sumData?.symbol,
-      price: sumData?.price.regularMarketPrice.fmt,
-      regMarketChange: sumData?.price.regularMarketChange.fmt,
-      regMarketChangePercent: sumData?.price.regularMarketChangePercent.fmt,
-      id: Math.random() * 1000,
-    };
-    // Check if the stock already exists in the favorites list
-    const checkDuplicate = props.favorites.some(
-      (fav) => fav.symbol === sumData?.symbol
-    );
-    // If the stock does not already exist in the favorites list or if the favorites list is empty, then add the stock to the favorites list
-    if (!checkDuplicate) {
-      props.setFavorites([...props.favorites, newFav]);
-    } else if (props.favorites.length < 1) {
-      props.setFavorites([...props.favorites, newFav]);
-    }
-  };
-
-  const removeFav = () => {
-    props.setFavorites(
-      props.favorites.filter((fav) => fav.symbol !== sumData?.symbol)
-    );
-  };
-
+  // Set isStarred to true or false
   useEffect(() => {
-    const checkIfFav = props.favorites.some(
-      (fav) => fav.symbol === sumData?.symbol
+    const starred = favorites?.some(
+      (fav) => fav.symbol === sumData?.price.symbol
     );
-    setIsStarred(checkIfFav);
-  }, [props.favorites]);
+    setIsStarred(starred);
+  }, [sumData, favorites]);
 
   // Determine if the market is open or closed
   useEffect(() => {
@@ -66,9 +38,28 @@ export const PanelHeader = (props) => {
   return (
     <div className={styles.panelHeader}>
       {isStarred ? (
-        <BiListMinus className={styles.starred} onClick={removeFav} />
+        <BiListMinus
+          className={styles.starred}
+          onClick={() => {
+            dispatch({
+              type: "deleted",
+              symbol: sumData?.price.symbol,
+            });
+          }}
+        />
       ) : (
-        <BiListPlus className={styles.star} onClick={addFav} />
+        <BiListPlus
+          className={styles.star}
+          onClick={() => {
+            dispatch({
+              type: "added",
+              symbol: sumData?.price.symbol,
+              price: sumData?.price.regularMarketPrice.raw,
+              mktChange: sumData?.price.regularMarketChange.fmt,
+              mktChangePercent: sumData?.price.regularMarketChangePercent.fmt,
+            });
+          }}
+        />
       )}
       <div className={styles.marketTimeDiv}>
         <p>{currentTime}</p>

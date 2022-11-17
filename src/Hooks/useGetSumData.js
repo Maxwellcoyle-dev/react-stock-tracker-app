@@ -15,7 +15,6 @@ const fetchSumData = async (ticker) => {
   };
 
   return await axios.request(options).then((response) => {
-    console.log(response.data);
     return response.data;
   });
 };

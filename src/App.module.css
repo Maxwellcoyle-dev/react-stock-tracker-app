@@ -44,6 +44,12 @@
   column-gap: 0.25rem;
 }
 
+@media screen and (max-width: 1100px) {
+  .stockViewPage {
+    flex-direction: column;
+  }
+}
+
 /* CHART STYLES */
 
 .chart {

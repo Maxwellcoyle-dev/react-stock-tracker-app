@@ -15,8 +15,8 @@ function App() {
   });
   const [input, setInput] = useState("tech");
   const [stockChartParams, setStockChartParams] = useState({
-    interval: "1mo",
-    range: "5y",
+    interval: "1d",
+    range: "2y",
   });
   const [currentTime, setCurrentTime] = useState();
 

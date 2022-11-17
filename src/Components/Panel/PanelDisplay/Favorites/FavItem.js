@@ -3,13 +3,20 @@ import styles from "../../PanelStyles.module.css";
 import { CgRemove } from "react-icons/cg";
 import { FiEdit } from "react-icons/fi";
 import { FavoritesContext } from "../../FavoritesContext";
+import { searchContext } from "../../../../Helper/searchContext";
 
 export const FavItem = (props) => {
   const { dispatch } = useContext(FavoritesContext);
+  const { setSearchTicker } = useContext(searchContext);
 
   return (
     <div className={styles.favoriteItem}>
-      <div className={styles.favoriteItemData}>
+      <div
+        className={styles.favoriteItemData}
+        onClick={() => {
+          setSearchTicker(props.symbol);
+        }}
+      >
         <h4>{props.symbol}</h4>
         <p>{props.price.toFixed(2)}</p>
         <p className={props.mktChange >= 0 ? styles.green : styles.red}>

@@ -22,19 +22,25 @@ const fetchSumData = async (ticker, intervalParam, rangeParam) => {
     },
   };
 
+  const round = (number) => {
+    return number ? +number.toFixed(2) : null;
+  };
+
   return await axios.request(options).then((response) => {
     let newData = [];
     for (let i = 0; i < response.data.chart.result[0].timestamp.length; i++) {
       newData = [
         ...newData,
         {
-          time: new Intl.DateTimeFormat("en-US").format(
+          x: new Intl.DateTimeFormat("en-US").format(
             response.data.chart.result[0].timestamp[i] * 1000
           ),
-          high: response.data.chart.result[0].indicators.quote[0].high[i],
-          low: response.data.chart.result[0].indicators.quote[0].low[i],
-          open: response.data.chart.result[0].indicators.quote[0].open[i],
-          close: response.data.chart.result[0].indicators.quote[0].close[i],
+          y: [
+            response.data.chart.result[0].indicators.quote[0].open[i],
+            response.data.chart.result[0].indicators.quote[0].high[i],
+            response.data.chart.result[0].indicators.quote[0].low[i],
+            response.data.chart.result[0].indicators.quote[0].close[i],
+          ].map(round),
         },
       ];
     }

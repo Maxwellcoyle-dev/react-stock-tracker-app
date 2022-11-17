@@ -66,6 +66,10 @@ export const StockNews = () => {
           >
             <h4>{heroStory?.title}</h4>
           </a>
+
+          <a href={heroStory?.link} target="_blank">
+            <button className={styles.Btn}>Go to Story</button>
+          </a>
         </div>
         {subStories.map((story) => {
           if (story) {
@@ -73,12 +77,11 @@ export const StockNews = () => {
               <div key={story.uuid} className={styles.newsItem}>
                 <hr className={styles.storyDivider} />
                 <p>{story?.publisher.toUpperCase()}</p>
-                <a
-                  className={styles.titleLink}
-                  href={story?.link}
-                  target="_blank"
-                >
+                <a className={styles.titleLink}>
                   <h4>{story?.title}</h4>
+                </a>
+                <a href={story?.link} target="_blank">
+                  <button className={styles.Btn}>Go to Story</button>
                 </a>
               </div>
             );

@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StockDataCard } from "./StockDataCard";
 import { SpinnerCircular } from "spinners-react";
 import styles from "../../PanelStyles.module.css";
-import { useGetLogo } from "../../../../Hooks/useGetLogo";
 import { Description } from "./Description";
+import { useGetSumData } from "../../../../Hooks/useGetSumData";
 
 export const StockData = (props) => {
-  const { logoIsLoading } = useGetLogo();
+  const { sumStatus } = useGetSumData();
   const [selected, setSelected] = useState("data");
+
+  useEffect(() => {
+    console.log(sumStatus);
+  }, [sumStatus]);
 
   return (
     <div className={styles.stockData}>
-      {logoIsLoading ? (
+      {sumStatus === "loading" ? (
         <div className={styles.spinner}>
           <SpinnerCircular
             size={50}
@@ -21,7 +25,7 @@ export const StockData = (props) => {
             secondaryColor="rgba(0, 0, 0, 0.44)"
           />
         </div>
-      ) : (
+      ) : sumStatus === "success" ? (
         <div className={styles.currentStockData}>
           <StockDataCard
             favorites={props.favorites}
@@ -29,6 +33,8 @@ export const StockData = (props) => {
           />
           <Description />
         </div>
+      ) : (
+        console.log(sumStatus)
       )}
     </div>
   );

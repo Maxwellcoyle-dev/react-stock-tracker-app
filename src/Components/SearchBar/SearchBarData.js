@@ -1,46 +1,36 @@
-import React, { useContext } from "react";
-import { searchContext } from "../../Helper/Context";
+import React, { useEffect } from "react";
+import { useGetLogo } from "../../Hooks/useGetLogo";
+import { useGetSumData } from "../../Hooks/useGetSumData";
 import styles from "./SearchBar.module.css";
 
 export const SearchBarData = () => {
-  const { summaryData, searchParamLogo } = useContext(searchContext);
+  const { sumData, sumStatus } = useGetSumData();
+  const { logo, logoStatus } = useGetLogo();
 
-  return (
-    <div className={styles.searchBarData}>
-      <div className={styles.searchBarLogoDiv}>
-        <a
-          href={summaryData?.summaryProfile.website}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src={searchParamLogo}
-            alt="company logo, provided by CUF Services 'https://companyurlfinder.com'"
-          />
-        </a>
-        <h2>{summaryData?.quoteType.symbol}</h2>
-      </div>
+  if (sumStatus === "success") {
+    return (
+      <div className={styles.searchBarData}>
+        <h2 className={styles.symbol}>{sumData?.quoteType.symbol}</h2>
 
-      <div className={styles.searchBarPriceDiv}>
         <h2
-          style={
-            summaryData?.price.regularMarketChangePercent.raw >= 0
-              ? { color: "green" }
-              : { color: "red" }
+          className={
+            sumData?.price.regularMarketChangePercent.raw >= 0
+              ? styles.green
+              : styles.red
           }
         >
-          ${summaryData?.financialData.currentPrice.fmt}
+          ${sumData?.financialData.currentPrice.fmt}
         </h2>
         <p
-          style={
-            summaryData?.price.regularMarketChangePercent.raw >= 0
-              ? { color: "green" }
-              : { color: "red" }
+          className={
+            sumData?.price.regularMarketChangePercent.raw >= 0
+              ? styles.green
+              : styles.red
           }
         >
-          {summaryData?.price.regularMarketChangePercent.fmt}
+          {sumData?.price.regularMarketChangePercent.fmt}
         </p>
       </div>
-    </div>
-  );
+    );
+  }
 };

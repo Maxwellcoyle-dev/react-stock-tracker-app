@@ -1,0 +1,591 @@
+/* Panel Styles Top Level containers */
+.panel {
+  height: 100%;
+  color: white;
+  border-radius: 0.2rem;
+  display: flex;
+  column-gap: 0.25rem;
+  margin-right: 0.25rem;
+  width: 30%;
+}
+
+@media screen and (max-width: 1100px) {
+  .panel {
+    width: 100%;
+    margin-top: 0.25rem;
+  }
+}
+
+.panelDisplay {
+  height: 100%;
+  background-color: #231f2a;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+  width: 100%;
+}
+
+.panelNav {
+  width: 3.5rem;
+  height: 100%;
+  background-color: #333333;
+}
+
+/* PanelDisplay Top Containers*/
+.panelHeader {
+  background-color: #333333;
+  min-height: 3.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 0.5rem;
+  text-align: left;
+  padding: 0 1rem;
+}
+
+.stockData {
+  padding: 2rem 1rem 3rem 1rem;
+  background-color: #333333;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.favorites {
+  color: white;
+  background-color: #333333;
+  padding: 2rem 0 3rem 0;
+  text-align: left;
+  height: 100%;
+  overflow-y: auto;
+  resize: vertical;
+}
+
+.stockNews {
+  height: 100%;
+  background-color: #333333;
+  padding: 2rem 0 7rem 0;
+  overflow-y: auto;
+}
+
+.spinner {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333333;
+}
+
+/* PanelNav */
+.panelNav {
+  display: flex;
+  flex-direction: column;
+}
+
+.panelNav a {
+  width: 3.5rem;
+  height: 3.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.panelNav a:hover {
+  background-color: #3f6eff;
+}
+
+.panelNav a .tooltipText {
+  visibility: hidden;
+  width: auto;
+  background-color: rgba(254, 254, 254);
+  color: rgb(28, 26, 26);
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  top: 0rem;
+  right: 105%;
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.panelNav a:hover .tooltipText {
+  visibility: visible;
+}
+
+.panelNav .tabIcon {
+  width: 2rem;
+  height: 2rem;
+  margin: auto;
+  text-align: center;
+}
+
+/* PanelHeader */
+
+.marketTimeDiv {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+}
+
+.marketTimeDiv p {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.marketTimeDiv .green {
+  font-size: 0.7rem;
+  color: greenyellow;
+}
+
+.marketTimeDiv .red {
+  font-size: 0.7rem;
+  color: orangered;
+}
+
+.star {
+  cursor: pointer;
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.star:hover {
+  color: gold;
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+.starred {
+  cursor: pointer;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: gold;
+}
+
+.starred {
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+/* StockData */
+.stockData::-webkit-scrollbar {
+  width: 0.75rem;
+  background-color: #aeaeae;
+  border-radius: 0.5rem;
+}
+
+.stockData::-webkit-scrollbar-thumb {
+  background-color: #424242;
+  border-radius: 0.5rem;
+}
+
+.stockDataHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  text-align: left;
+  padding-bottom: 1rem;
+}
+
+.stockDataHeader h2 {
+  text-align: left;
+  font-size: 1rem;
+  width: fit-content;
+}
+
+.stockDataHeader a {
+  width: min-content;
+}
+
+.stockDataHeader img {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+}
+
+.stockDataSubHeader {
+  display: flex;
+  width: 100%;
+  column-gap: 0.5rem;
+  text-align: left;
+  padding-bottom: 0.5rem;
+  align-items: center;
+}
+
+.stockDataSubHeader p {
+  font-size: 0.8rem;
+  width: fit-content;
+  color: #bebebe;
+}
+
+.summaryStats {
+  display: flex;
+  text-align: left;
+  column-gap: 0.5rem;
+  align-items: baseline;
+  width: min-content;
+  padding-top: 1rem;
+}
+
+.summaryStats p {
+  font-size: 0.9rem;
+}
+
+.keyStats {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  row-gap: 0.5rem;
+  align-items: center;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+.keyStats h4 {
+  grid-column: 1 / 3;
+  padding-bottom: 0.5rem;
+}
+
+.keyStats p {
+  font-size: 0.9rem;
+  width: 100%;
+  padding-top: 0.25rem;
+}
+
+.keyStats .statLabel {
+  font-size: 0.7rem;
+  color: #bebebe;
+}
+
+/* Description */
+
+.descriptionDiv {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  text-align: left;
+}
+
+.descriptionDiv p {
+  font-size: 0.9rem;
+  line-height: 1.3rem;
+}
+
+.descriptionDiv h4 {
+  padding-bottom: 0.75rem;
+  font-size: 1, 2rem;
+}
+
+.descriptionDiv .showPart {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* number of lines to show */
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.descriptionDiv .iconDiv {
+  text-align: center;
+  margin: auto;
+  margin-top: 1rem;
+  width: 3rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.descriptionDiv .iconDiv:hover {
+  background-color: #424242;
+}
+
+/* favorites */
+
+.favorites::-webkit-scrollbar {
+  width: 0.75rem;
+  background-color: #aeaeae;
+  border-radius: 0.5rem;
+}
+
+.favorites::-webkit-scrollbar-thumb {
+  background-color: #424242;
+  border-radius: 0.5rem;
+}
+
+.favorites h3 {
+  padding-left: 1rem;
+}
+
+.favorites p {
+  font-size: 0.85rem;
+}
+
+.favorites h4 {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.favoriteListLabel {
+  display: flex;
+  flex-direction: column;
+  color: #aeaeae;
+  padding: 1rem 1rem 1rem 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.labels {
+  width: calc(100% - 4rem);
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  padding-bottom: 0.25rem;
+}
+
+.favoriteItem {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  line-height: auto;
+}
+
+.favoriteItemData {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+  align-items: center;
+  padding: 0.2rem;
+  width: 100%;
+}
+
+.favoriteItemData .green {
+  color: greenyellow;
+}
+
+.favoriteItemData .red {
+  color: orangered;
+}
+
+.favoriteItem:hover {
+  background-color: #424242;
+  border-radius: 0.25rem;
+}
+
+.favoriteItem:hover .iconButtonContainer {
+  background-color: #424242;
+}
+
+.iconButtonContainer {
+  width: 2rem;
+  height: 2rem;
+  background-color: #333333;
+  border-radius: 0.5rem;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.favoriteItem .iconButtonContainer:hover {
+  background-color: #333333;
+  cursor: pointer;
+}
+
+.favItemIconRed {
+  border-radius: 0.1rem;
+  cursor: pointer;
+  width: 1.75rem;
+  margin: 0.2rem;
+  margin: auto;
+}
+
+.favItemIconGreen {
+  border-radius: 0.1rem;
+  cursor: pointer;
+  width: 1.75rem;
+  margin: 0.2rem;
+  margin: auto;
+}
+
+.favoriteItem .iconButtonContainer:hover .favItemIconRed {
+  background-color: transparent;
+  color: orangered;
+}
+
+.favoriteItem .iconButtonContainer:hover .favItemIconGreen {
+  background-color: transparent;
+  color: greenyellow;
+}
+
+.addNote {
+  color: white;
+  background-color: #333333;
+  padding: 2rem 1rem 3rem 1rem;
+  text-align: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+.addNote textarea {
+  outline: none;
+  min-height: 6rem;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  resize: vertical;
+  border-radius: 0.75rem;
+}
+
+.addNote textarea:focus {
+  border: 2px solid #3f6eff;
+}
+
+.addNote span {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.buttonDiv {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+}
+
+.buttonDiv .disabled {
+  color: #b1b9d0;
+  width: 50%;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.25rem 0;
+  background-color: #526393;
+  transition: 0.2s;
+}
+
+.buttonDiv .active {
+  color: white;
+  width: 50%;
+  border-radius: 0.5rem;
+  border: 1px solid #3f6eff;
+  padding: 0.25rem 0;
+  background-color: #393939;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.buttonDiv .active:hover {
+  background-color: #526393;
+}
+
+.buttonDiv .primary {
+  color: white;
+  width: 50%;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.25rem 0;
+  background-color: #3f6eff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.buttonDiv .primary:hover {
+  background-color: #275cfc;
+}
+
+/* StockNews */
+
+.stockNews h3 {
+  padding: 0 1rem 1rem 1rem;
+  text-align: left;
+}
+
+.heroStory {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding: 0 1rem 2rem 1rem;
+  text-align: left;
+}
+
+.heroStory p {
+  padding-top: 1rem;
+}
+
+.heroStory .titleLink {
+  color: white;
+}
+
+.imageLink img {
+  width: 100%;
+}
+
+.newsItem {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  padding: 1rem 1rem 1rem 1rem;
+  text-align: left;
+}
+
+.newsItem hr {
+  margin: 0.5rem 0;
+}
+
+.newsItem h4 {
+  color: white;
+  line-height: 1.5rem;
+  font-weight: 600;
+}
+
+.newsItem p {
+  padding-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: whitesmoke;
+}
+
+a {
+  text-decoration: none;
+}
+
+.storyDiv p {
+  padding-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.Btn {
+  width: 50%;
+  color: white;
+  border-radius: 0.5rem;
+  border: 1px solid #3f6eff;
+  padding: 0.25rem 0;
+  background-color: #393939;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.Btn:hover {
+  background-color: #526393;
+}
+
+/* Universal */
+.green {
+  color: greenyellow;
+}
+
+.red {
+  color: orangered;
+}

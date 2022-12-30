@@ -3,12 +3,13 @@ import { RangeSelector } from "./RangeSelector";
 import { MetricSelector } from "./MetricSelector";
 import { ChartName } from "./ChartName";
 import styles from "./ChartStyles.module.css";
+import { useGetSumData } from "../../Hooks/useGetSumData";
 
-export const ChartHeader = (props) => {
+export const ChartHeader = () => {
+  const { sumData } = useGetSumData();
   return (
     <div className={styles.chartHeader}>
-      <ChartName />
-      <MetricSelector metric={props.metric} setMetric={props.setMetric} />
+      <h2>{sumData?.quoteType.longName}</h2>
       <RangeSelector />
     </div>
   );

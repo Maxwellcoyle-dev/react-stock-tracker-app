@@ -49,5 +49,7 @@ export const favoritesReducer = (favorites, action) => {
         return f;
       });
     }
+    default:
+      return null;
   }
 };

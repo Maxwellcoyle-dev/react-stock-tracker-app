@@ -16,6 +16,7 @@ export const Favorites = () => {
         setIsEditing(fav.editNote);
         setNoteText(fav.note);
       }
+      return null;
     });
   }, [favorites]);
 
@@ -35,7 +36,7 @@ export const Favorites = () => {
           </>
         </div>
         <div>
-          {favorites.map((fav) => {
+          {favorites.map((fav, index) => {
             return (
               <FavItem
                 symbol={fav.symbol}
@@ -46,6 +47,7 @@ export const Favorites = () => {
                 editNote={fav.editNote}
                 isEditing={isEditing}
                 setIsEditing={setIsEditing}
+                key={index}
               />
             );
           })}

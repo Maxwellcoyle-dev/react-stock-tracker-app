@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useGetSumData } from "../../../../Hooks/useGetSumData";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import styles from "../../PanelStyles.module.css";

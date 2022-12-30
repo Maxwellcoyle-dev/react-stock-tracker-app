@@ -83,7 +83,7 @@
   flex-direction: column;
 }
 
-.panelNav a {
+.panelNav div {
   width: 3.5rem;
   height: 3.5rem;
   position: relative;
@@ -93,11 +93,11 @@
   border-radius: 0.5rem;
 }
 
-.panelNav a:hover {
+.panelNav div:hover {
   background-color: #3f6eff;
 }
 
-.panelNav a .tooltipText {
+.panelNav div .tooltipText {
   visibility: hidden;
   width: auto;
   background-color: rgba(254, 254, 254);
@@ -115,7 +115,7 @@
   z-index: 1;
 }
 
-.panelNav a:hover .tooltipText {
+.panelNav div:hover .tooltipText {
   visibility: visible;
 }
 

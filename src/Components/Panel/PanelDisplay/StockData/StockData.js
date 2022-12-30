@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { StockDataCard } from "./StockDataCard";
 import { SpinnerCircular } from "spinners-react";
 import styles from "../../PanelStyles.module.css";

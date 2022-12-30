@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import styles from "../../PanelStyles.module.css";
 import { CgRemove } from "react-icons/cg";
 import { FiEdit } from "react-icons/fi";

@@ -1,7 +1,5 @@
 import React from "react";
 import { RangeSelector } from "./RangeSelector";
-import { MetricSelector } from "./MetricSelector";
-import { ChartName } from "./ChartName";
 import styles from "./ChartStyles.module.css";
 import { useGetSumData } from "../../Hooks/useGetSumData";
 

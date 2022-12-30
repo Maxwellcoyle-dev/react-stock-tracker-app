@@ -10,7 +10,7 @@ export const LandingPage = () => {
       <img
         style={{ paddingTop: "6rem" }}
         src={heroImage}
-        alt="landing page image is an illustration of a forest"
+        alt="illustration of a forest"
       />
     </div>
   );

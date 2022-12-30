@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
-import { useGetLogo } from "../../Hooks/useGetLogo";
+import React from "react";
 import { useGetSumData } from "../../Hooks/useGetSumData";
 import styles from "./SearchBar.module.css";
 
 export const SearchBarData = () => {
   const { sumData, sumStatus } = useGetSumData();
-  const { logo, logoStatus } = useGetLogo();
 
   if (sumStatus === "success") {
     return (

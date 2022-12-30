@@ -10,15 +10,6 @@ export const AutoComplete = (props) => {
   const wrapperRef = useRef(null);
   const navigate = useNavigate();
 
-  // Add & Remove event listener to handle mouseclicks outside of the autcomplete div
-  useEffect(() => {
-    window.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      window.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   // Event handler to set display to false when mouseclick event happens outside of the autocomplete div
   const handleClickOutside = (event) => {
     const { current: wrap } = wrapperRef;
@@ -27,12 +18,21 @@ export const AutoComplete = (props) => {
     }
   };
 
+  // Add & Remove event listener to handle mouseclicks outside of the autcomplete div
+  useEffect(() => {
+    window.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
+
   // If input is set to an empty string, reassign input to original default value which causes the useQuery to fire another request
   useEffect(() => {
     if (input === "") {
       setInput("tech");
     }
-  }, []);
+  }, [input, setInput]);
 
   return (
     <div ref={wrapperRef} className={styles.optionsDiv}>

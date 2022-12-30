@@ -3,7 +3,6 @@ import MainChart from "./MainChart";
 import styles from "./ChartStyles.module.css";
 import { SpinnerCircular } from "spinners-react";
 import { useGetPriceData } from "../../Hooks/useGetPriceData";
-import { RangeSelector } from "./RangeSelector";
 import { ChartHeader } from "./ChartHeader";
 
 export const StockChart = () => {

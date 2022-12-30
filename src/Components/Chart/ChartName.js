@@ -5,11 +5,9 @@ import { useGetSumData } from "../../Hooks/useGetSumData";
 export const ChartName = () => {
   const { sumData } = useGetSumData();
 
-  {
-    return (
-      sumData && (
-        <h2 className={styles.stockName}> {sumData?.quoteType.shortName} </h2>
-      )
-    );
-  }
+  return (
+    sumData && (
+      <h2 className={styles.stockName}> {sumData?.quoteType.shortName} </h2>
+    )
+  );
 };

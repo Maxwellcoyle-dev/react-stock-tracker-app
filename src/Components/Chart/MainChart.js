@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useGetPriceData } from "../../Hooks/useGetPriceData";
 import Chart from "react-apexcharts";
-import { useGetSumData } from "../../Hooks/useGetSumData";
 
 const MainChart = () => {
   const { priceData } = useGetPriceData();
-  const { sumData } = useGetSumData();
   const [series, setSeries] = useState([
     {
       data: [],

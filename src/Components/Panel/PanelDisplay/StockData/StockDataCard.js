@@ -1,11 +1,9 @@
 import React from "react";
-import { useGetLogo } from "../../../../Hooks/useGetLogo";
 import { useGetSumData } from "../../../../Hooks/useGetSumData";
 import styles from "../../PanelStyles.module.css";
 
 export const StockDataCard = () => {
   const { sumData } = useGetSumData();
-  const { logo } = useGetLogo();
   let color = sumData?.price.regularMarketChangePercent.raw >= 0;
 
   return (

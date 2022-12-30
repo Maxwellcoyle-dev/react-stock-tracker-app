@@ -56,18 +56,23 @@ export const StockNews = () => {
             className={styles.imageLink}
             href={heroStory?.link}
             target="_blank"
+            rel="noreferrer"
           >
-            <img src={heroStory?.thumbnail?.resolutions[0]?.url} />
+            <img
+              src={heroStory?.thumbnail?.resolutions[0]?.url}
+              alt="thumbnail for the news story title"
+            />
           </a>
           <a
             className={styles.titleLink}
             href={heroStory?.link}
             target="_blank"
+            rel="noreferrer"
           >
             <h4>{heroStory?.title}</h4>
           </a>
 
-          <a href={heroStory?.link} target="_blank">
+          <a href={heroStory?.link} target="_blank" rel="noreferrer">
             <button className={styles.Btn}>Go to Story</button>
           </a>
         </div>
@@ -77,15 +82,21 @@ export const StockNews = () => {
               <div key={story.uuid} className={styles.newsItem}>
                 <hr className={styles.storyDivider} />
                 <p>{story?.publisher.toUpperCase()}</p>
-                <a className={styles.titleLink}>
+                <a
+                  className={styles.titleLink}
+                  href={story?.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <h4>{story?.title}</h4>
                 </a>
-                <a href={story?.link} target="_blank">
+                <a href={story?.link} target="_blank" rel="noreferrer">
                   <button className={styles.Btn}>Go to Story</button>
                 </a>
               </div>
             );
           }
+          return null;
         })}
       </div>
     );

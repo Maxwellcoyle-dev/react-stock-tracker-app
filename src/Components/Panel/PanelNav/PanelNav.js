@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styles from "../PanelStyles.module.css";
 import { CgProfile } from "react-icons/cg";
 import { BiListOl, BiNews } from "react-icons/bi";
@@ -6,7 +6,7 @@ import { BiListOl, BiNews } from "react-icons/bi";
 export const PanelNav = (props) => {
   return (
     <div className={styles.panelNav}>
-      <a
+      <div
         className={
           props.panelTab === "stock-data" ? styles.selectedTab : styles.tab
         }
@@ -14,8 +14,8 @@ export const PanelNav = (props) => {
       >
         <CgProfile className={styles.tabIcon} />
         <span className={styles.tooltipText}>Overview</span>
-      </a>
-      <a
+      </div>
+      <div
         className={
           props.panelTab === "favorites" ? styles.selectedTab : styles.tab
         }
@@ -23,8 +23,8 @@ export const PanelNav = (props) => {
       >
         <BiListOl className={styles.tabIcon} />
         <span className={styles.tooltipText}>Watch List</span>
-      </a>
-      <a
+      </div>
+      <div
         className={
           props.panelTab === "stock-news" ? styles.selectedTab : styles.tab
         }
@@ -32,7 +32,7 @@ export const PanelNav = (props) => {
       >
         <BiNews className={styles.tabIcon} />
         <span className={styles.tooltipText}>News</span>
-      </a>
+      </div>
     </div>
   );
 };

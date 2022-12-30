@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { searchContext } from "../Helper/searchContext";
 
 const fetchSumData = async (ticker) => {
+  console.log("fetch sum data fired");
   const options = {
     method: "GET",
     url: "https://yh-finance.p.rapidapi.com/stock/v2/get-summary",
@@ -15,7 +16,6 @@ const fetchSumData = async (ticker) => {
   };
 
   return await axios.request(options).then((response) => {
-    console.log(response.data);
     return response.data;
   });
 };
@@ -27,7 +27,9 @@ export const useGetSumData = () => {
     data: sumData,
     status: sumStatus,
     refetch: refetchSum,
-  } = useQuery(["sumData", searchTicker], () => fetchSumData(searchTicker), {
+  } = useQuery({
+    queryKey: ["sumData", searchTicker],
+    queryFn: () => fetchSumData(searchTicker),
     enabled: searchTicker !== "",
     refetchOnMount: false,
   });

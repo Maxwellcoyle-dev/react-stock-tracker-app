@@ -55,23 +55,21 @@ export const useGetPriceData = () => {
     data: priceData,
     isLoading: priceDataLoading,
     refetch: refetchPrice,
-  } = useQuery(
-    [
+  } = useQuery({
+    queryKey: [
       "sumData",
       searchTicker,
       stockChartParams.interval,
       stockChartParams.range,
     ],
-    () =>
+    queryFn: () =>
       fetchSumData(
         searchTicker,
         stockChartParams.interval,
         stockChartParams.range
       ),
-    {
-      enabled: searchTicker !== "",
-    }
-  );
+    enabled: searchTicker !== "",
+  });
 
   return { priceData, priceDataLoading, refetchPrice };
 };

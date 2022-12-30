@@ -7,7 +7,6 @@ import { useGetSumData } from "../../../../Hooks/useGetSumData";
 
 export const StockData = (props) => {
   const { sumStatus } = useGetSumData();
-  const [selected, setSelected] = useState("data");
 
   useEffect(() => {
     console.log(sumStatus);

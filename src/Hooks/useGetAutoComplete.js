@@ -27,7 +27,9 @@ export const useGetAutoComplete = () => {
     data: autoCompleteData,
     status: autoCompleteStatus,
     refetch: refetchAutoCompelte,
-  } = useQuery(["autoComplete", input], () => fetchAutoComplete(input), {
+  } = useQuery({
+    queryKey: ["autoComplete", input],
+    queryFn: () => fetchAutoComplete(input),
     enabled: input !== "",
     staleTime: 10000,
   });

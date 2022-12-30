@@ -18,9 +18,11 @@
 
 /* Landing Page  */
 .landingPage {
+  box-sizing: border-box;
   background-color: #333333;
   width: inherit;
   min-height: 100vh;
+  height: 100%;
   padding-top: 3rem;
   color: white;
   display: flex;
